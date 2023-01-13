@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-BrowserModule
+BrowserModule;
 
 @Component({
     selector: 'app-eventos',
@@ -12,6 +12,8 @@ export class EventosComponent implements OnInit {
     public eventos: any;
 
     constructor(private http: HttpClient) {}
+
+  
 
     ngOnInit(): void {
         this.getEventos();
