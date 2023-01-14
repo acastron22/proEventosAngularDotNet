@@ -86,3 +86,9 @@ C:\Users\ariel\Desktop\Estudos\Angular_ProEventos_FullStack\backend\ProEventos.A
 C:\Users\ariel\Desktop\Estudos\Angular_ProEventos_FullStack\backend\ProEventos.API\obj\Debug\net5.0\ref\ProEventos.API.dll
 C:\Users\ariel\Desktop\Estudos\Angular_ProEventos_FullStack\backend\ProEventos.API\obj\Debug\net5.0\ProEventos.API.pdb
 C:\Users\ariel\Desktop\Estudos\Angular_ProEventos_FullStack\backend\ProEventos.API\obj\Debug\net5.0\ProEventos.API.genruntimeconfig.cache
+C:\Users\ariel\Desktop\Estudos\Angular_ProEventos_FullStack\backend\ProEventos.API\bin\Debug\net5.0\ProEventos.Application.dll
+C:\Users\ariel\Desktop\Estudos\Angular_ProEventos_FullStack\backend\ProEventos.API\bin\Debug\net5.0\ProEventos.Application.pdb
+C:\Users\ariel\Desktop\Estudos\Angular_ProEventos_FullStack\backend\ProEventos.API\bin\Debug\net5.0\ProEventos.Domain.dll
+C:\Users\ariel\Desktop\Estudos\Angular_ProEventos_FullStack\backend\ProEventos.API\bin\Debug\net5.0\ProEventos.Persistence.dll
+C:\Users\ariel\Desktop\Estudos\Angular_ProEventos_FullStack\backend\ProEventos.API\bin\Debug\net5.0\ProEventos.Domain.pdb
+C:\Users\ariel\Desktop\Estudos\Angular_ProEventos_FullStack\backend\ProEventos.API\bin\Debug\net5.0\ProEventos.Persistence.pdb
