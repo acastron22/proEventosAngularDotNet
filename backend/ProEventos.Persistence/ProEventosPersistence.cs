@@ -73,7 +73,7 @@ namespace ProEventos.Persistence
 
             return await query.ToArrayAsync();
         }
-        public async Task<Evento> GetAllEventoByIdAsync(int EventoId, bool includePalestrantes)
+        public async Task<Evento> GetAllEventoByIdAsync(int eventoId, bool includePalestrantes)
         {
             IQueryable<Evento> query = _context.Eventos
             .Include(e => e.Lotes)
@@ -87,21 +87,59 @@ namespace ProEventos.Persistence
             }
 
             query = query.OrderBy(e => e.Id)
-                    .Where(e => e.Id == EventoId);
+                    .Where(e => e.Id == eventoId);
 
             return await query.FirstOrDefaultAsync();
         }
-        public Task<Palestrante> GetAllPalestranteByIdAsync(int EventoId, bool includeEventos)
+        public async Task<Palestrante[]> GetAllPalestrantesAsync(bool includeEventos = false)
         {
-            throw new NotImplementedException();
+            IQueryable<Palestrante> query = _context.Palestrantes
+                                           .Include(p => p.RedesSociais);
+
+            if (includeEventos)
+            {
+                query = query
+                        .Include(p => p.PalestrantesEventos)
+                        .ThenInclude(pe => pe.Evento);
+            }
+
+            query = query.OrderBy(p => p.Id);
+
+            return await query.ToArrayAsync();
         }
-        public Task<Palestrante[]> GetAllPalestrantesAsync(bool includeEventos)
+        public async Task<Palestrante[]> GetAllPalestrantesByNomeAsync(string nome, bool includeEventos)
         {
-            throw new NotImplementedException();
+            IQueryable<Palestrante> query = _context.Palestrantes
+                                          .Include(p => p.RedesSociais);
+
+            if (includeEventos)
+            {
+                query = query
+                        .Include(p => p.PalestrantesEventos)
+                        .ThenInclude(pe => pe.Evento);
+            }
+
+            query = query.OrderBy(p => p.Id)
+                         .Where(p => p.Nome.ToLower().Contains(nome));
+
+            return await query.ToArrayAsync();
         }
-        public Task<Palestrante[]> GetAllPalestrantesByNomeAsync(string Nome, bool includeEventos)
+        public async Task<Palestrante> GetAllPalestranteByIdAsync(int palestranteId, bool includeEventos)
         {
-            throw new NotImplementedException();
+            IQueryable<Palestrante> query = _context.Palestrantes
+           .Include(p => p.RedesSociais);
+
+            if (includeEventos)
+            {
+                query = query
+                        .Include(p => p.PalestrantesEventos)
+                        .ThenInclude(pe => pe.Evento);
+            }
+
+            query = query.OrderBy(p => p.Id)
+                    .Where(p => p.Id == palestranteId);
+
+            return await query.FirstOrDefaultAsync();
         }
     }
 }
