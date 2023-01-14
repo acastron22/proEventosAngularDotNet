@@ -11,16 +11,18 @@ BrowserModule;
 export class EventosComponent implements OnInit {
     public eventos: any = [];
     public eventosFiltrados: any = [];
+    private _filtroLista: string = '';
+    
     widthImg: number = 150;
     marginImg: number = 2;
     showImg: boolean = false;
     showText: string = 'Exibir Imagem';
 
-    private _filtroLista: string = '';
 
     public get filtroLista() {
         return this._filtroLista;
     }
+
     public set filtroLista(value: string) {
         this._filtroLista = value;
         this.eventosFiltrados = this.filtroLista
