@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ProEventos.Persistence
+namespace ProEventos.Persistente
 {
     public class Class1
     {
