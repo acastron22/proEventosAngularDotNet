@@ -21,6 +21,15 @@ namespace ProEventos.Persistente
         {
             modelBuilder.Entity<PalestranteEvento>()
                                 .HasKey(PE => new { PE.EventoId, PE.PalestranteId });
+
+            modelBuilder.Entity<Evento>()
+                        .HasMany(e=> e.RedesSociais)
+                        .WithOne(rS => rS.Evento)
+                        .OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<Palestrante>()
+                        .HasMany(e=> e.RedesSociais)
+                        .WithOne(rS => rS.Palestrante)
+                        .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

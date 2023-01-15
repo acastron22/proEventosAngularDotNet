@@ -92,3 +92,7 @@ C:\Users\ariel\Desktop\Estudos\Angular_ProEventos_FullStack\backend\ProEventos.A
 C:\Users\ariel\Desktop\Estudos\Angular_ProEventos_FullStack\backend\ProEventos.API\bin\Debug\net5.0\ProEventos.Persistence.dll
 C:\Users\ariel\Desktop\Estudos\Angular_ProEventos_FullStack\backend\ProEventos.API\bin\Debug\net5.0\ProEventos.Domain.pdb
 C:\Users\ariel\Desktop\Estudos\Angular_ProEventos_FullStack\backend\ProEventos.API\bin\Debug\net5.0\ProEventos.Persistence.pdb
+C:\Users\ariel\Desktop\Estudos\Angular_ProEventos_FullStack\backend\ProEventos.API\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\ariel\Desktop\Estudos\Angular_ProEventos_FullStack\backend\ProEventos.API\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\ariel\Desktop\Estudos\Angular_ProEventos_FullStack\backend\ProEventos.API\bin\Debug\net5.0\Newtonsoft.Json.dll
+C:\Users\ariel\Desktop\Estudos\Angular_ProEventos_FullStack\backend\ProEventos.API\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
