@@ -1,4 +1,4 @@
-import { IEvento } from './ievento';
+import { IEvento } from './IEvento';
 
 export interface ILotes {
     id: number;

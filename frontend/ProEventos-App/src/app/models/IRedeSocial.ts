@@ -1,5 +1,5 @@
-import { IEvento } from './ievento';
-import { IPalestrante } from './ipalestrante';
+import { IEvento } from './IEvento';
+import { IPalestrante } from './IPalestrante';
 export interface IRedeSocial {
     id: number;
     nome: string;

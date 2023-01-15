@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { EventoService } from './../services/evento.service';
 import { Component, OnInit } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 BrowserModule;
@@ -12,12 +12,11 @@ export class EventosComponent implements OnInit {
     public eventos: any = [];
     public eventosFiltrados: any = [];
     private _filtroLista: string = '';
-    
+
     widthImg: number = 150;
     marginImg: number = 2;
     showImg: boolean = false;
     showText: string = 'Exibir Imagem';
-
 
     public get filtroLista() {
         return this._filtroLista;
@@ -39,14 +38,14 @@ export class EventosComponent implements OnInit {
         );
     }
 
-    constructor(private http: HttpClient) {}
+    constructor(private eventoService: EventoService) {}
 
     ngOnInit(): void {
         this.getEventos();
     }
 
     public getEventos(): void {
-        this.http.get('https:localhost:5001/api/evento').subscribe(
+        this.eventoService.getEvento().subscribe(
             (response: any) => {
                 this.eventos = response;
                 this.eventosFiltrados = this.eventos;

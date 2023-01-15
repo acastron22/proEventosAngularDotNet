@@ -1,5 +1,5 @@
-import { ILotes } from './ilotes';
-import { IPalestrante } from './ipalestrante';
+import { ILotes } from './ILotes';
+import { IPalestrante } from './IPalestrante';
 import { IRedeSocial } from './IRedeSocial';
 
 export interface IEvento {

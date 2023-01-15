@@ -1,4 +1,4 @@
-import { IEvento } from './ievento'
+import { IEvento } from './IEvento'
 import { IRedeSocial } from './IRedeSocial'
 
 export interface IPalestrante {
