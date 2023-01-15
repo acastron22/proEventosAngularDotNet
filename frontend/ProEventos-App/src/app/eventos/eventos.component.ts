@@ -17,7 +17,7 @@ export class EventosComponent implements OnInit {
     widthImg: number = 150;
     marginImg: number = 2;
     showImg: boolean = false;
-    showText: string = 'Exibir Imagem';
+    showText: string = 'Exibir';
 
     public get filtroLista() {
         return this._filtroLista;
@@ -46,20 +46,22 @@ export class EventosComponent implements OnInit {
     }
 
     public getEventos(): void {
-        this.eventoService.getEvento().subscribe(
-            (_eventos: IEvento[]) => {
+        const observer = {
+            next: (_eventos: IEvento[]) => {
                 this.eventos = _eventos;
                 this.eventosFiltrados = this.eventos;
+                console.log(this.eventos);
             },
-            (error: any) => console.log(error)
-        );
-        console.log(this.eventos);
+            erro: (error: any) => console.log(error),
+            complete: () => {},
+        };
+        this.eventoService.getEvento().subscribe(observer);
     }
 
     public showImgFunction(): void {
         this.showImg = !this.showImg;
         this.showImg
-            ? (this.showText = 'Ocultar Imagem')
-            : (this.showText = 'Exibir Imagem');
+            ? (this.showText = 'Ocultar')
+            : (this.showText = 'Exibir');
     }
 }

@@ -21,6 +21,9 @@
                     (click)="showImgFunction()"
                     class="btn btn-secondary btn-sm"
                 >
+                    <i
+                        class="{{ showImg ? 'fa fa-eye' : 'fa fa-eye-slash' }}"
+                    ></i>
                     {{ showText }}
                 </button>
             </th>
@@ -34,7 +37,7 @@
         </tr>
     </thead>
     <tbody *ngIf="eventos && eventos.length">
-        <tr *ngFor="let evento of eventosFiltrados">
+        <tr *ngFor="let evento of eventosFiltrados; let i = index">
             <td>
                 <img
                     [collapse]="!showImg"
@@ -50,10 +53,14 @@
             <td>{{ evento.local }}</td>
             <td>{{ evento.dataEvento }}</td>
             <td>{{ evento.qtdPessoas }}</td>
-            <td>{{ evento.lotes }}</td>
+            <td>{{ evento.lotes[0].nome }}</td>
             <td>
-                <button class="btn btn-primary mx-1">Editar</button>
-                <button class="btn btn-danger mx-1">Excluir</button>
+                <button class="btn btn-primary my-1">
+                    <i class="fa fa-edit"></i>
+                </button>
+                <button class="btn btn-danger my-1">
+                    <i class="fa fa-trash"></i>
+                </button>
             </td>
         </tr>
     </tbody>
