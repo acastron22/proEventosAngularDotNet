@@ -1,3 +1,4 @@
+import { IEvento } from './../models/IEvento';
 import { EventoService } from './../services/evento.service';
 import { Component, OnInit } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -9,8 +10,8 @@ BrowserModule;
     styleUrls: ['./eventos.component.scss'],
 })
 export class EventosComponent implements OnInit {
-    public eventos: any = [];
-    public eventosFiltrados: any = [];
+    public eventos: IEvento[] = [];
+    public eventosFiltrados: IEvento[] = [];
     private _filtroLista: string = '';
 
     widthImg: number = 150;
@@ -29,7 +30,7 @@ export class EventosComponent implements OnInit {
             : this.eventos;
     }
 
-    filtrarEventos(filtrarPor: string): any {
+    filtrarEventos(filtrarPor: string): IEvento[] {
         filtrarPor = filtrarPor.toLocaleLowerCase();
         return this.eventos.filter(
             (evento: any) =>
@@ -46,8 +47,8 @@ export class EventosComponent implements OnInit {
 
     public getEventos(): void {
         this.eventoService.getEvento().subscribe(
-            (response: any) => {
-                this.eventos = response;
+            (_eventos: IEvento[]) => {
+                this.eventos = _eventos;
                 this.eventosFiltrados = this.eventos;
             },
             (error: any) => console.log(error)
@@ -55,7 +56,7 @@ export class EventosComponent implements OnInit {
         console.log(this.eventos);
     }
 
-    showImgFunction() {
+    public showImgFunction(): void {
         this.showImg = !this.showImg;
         this.showImg
             ? (this.showText = 'Ocultar Imagem')
