@@ -21,7 +21,7 @@ namespace ProEventos.API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> Get()
+        public async Task<IActionResult> Get()
         {
             try
             {
@@ -37,7 +37,7 @@ namespace ProEventos.API.Controllers
             }
         }
         [HttpGet("{id}")]
-        public async Task<ActionResult> GetById(int id)
+        public async Task<IActionResult> GetById(int id)
         {
             try
             {
@@ -53,7 +53,7 @@ namespace ProEventos.API.Controllers
             }
         }
         [HttpGet("{tema}/tema")]
-        public async Task<ActionResult> GetByTema(string tema)
+        public async Task<IActionResult> GetByTema(string tema)
         {
             try
             {
@@ -70,21 +70,54 @@ namespace ProEventos.API.Controllers
         }
 
         [HttpPost]
-        public string Post()
+        public async Task<IActionResult> Post(Evento model)
         {
-            return "exemplo de post";
+            try
+            {
+                var evento = await _eventoService.AddEventos(model);
+                if (evento == null) return BadRequest("Error. Evento não pode ser adicionado");
+
+                return Ok(evento);
+            }
+            catch (Exception ex)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError,
+                $"Erro ao tentar publicar evento. Erro: {ex.Message}");
+            }
         }
+
         [HttpPut("{id}")]
-        public string Put(int id)
+        public async Task<IActionResult> Put(int id, Evento model)
         {
-            return $"exemplo de put com id = {id}";
-        }
-        [HttpDelete("{id}")]
-        public string Delete(int id)
-        {
-            return $"exemplo de Delete com id = {id}";
+            try
+            {
+                var evento = await _eventoService.UpdateEvento(id, model);
+                if (evento == null) return BadRequest("Error. Evento não pode ser adicionado");
+
+                return Ok(evento);
+            }
+            catch (Exception ex)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError,
+                $"Erro ao tentar publicar evento. Erro: {ex.Message}");
+            }
         }
 
-
+        [HttpDelete]
+        public async Task<IActionResult> Delete(int id)
+        {
+            try
+            {
+                if (await _eventoService.DeleteEvento(id))
+                    return Ok("Deletado");
+                else
+                    return BadRequest("Evento não deletado");
+            }
+            catch (Exception ex)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError,
+                $"Erro ao tentar publicar evento. Erro: {ex.Message}");
+            }
+        }
     }
 }
