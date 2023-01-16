@@ -13,6 +13,7 @@ import { NavegacaoComponent } from './navegacao/navegacao.component';
 
 // ngx-bootstrap
 import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { DateTimeFormatPipe } from './helpers/date-time-format.pipe';
 
 @NgModule({
     declarations: [
@@ -20,6 +21,7 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
         EventosComponent,
         PalestrantesComponent,
         NavegacaoComponent,
+        DateTimeFormatPipe,
     ],
     imports: [
         BrowserModule,
