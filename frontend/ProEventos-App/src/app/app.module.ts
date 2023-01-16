@@ -1,9 +1,13 @@
 // Componentes da aplicação
 import { AppComponent } from './app.component';
-import { EventosComponent } from './eventos/eventos.component';
-import { NavegacaoComponent } from './navegacao/navegacao.component';
-import { PalestrantesComponent } from './palestrantes/palestrantes.component';
+import { EventosComponent } from './componentes/eventos/eventos.component';
+import { NavegacaoComponent } from './shared/navegacao/navegacao.component';
+import { PalestrantesComponent } from './componentes/palestrantes/palestrantes.component';
 import { AppRoutingModule } from './app-routing.module';
+import { TituloComponent } from './shared/titulo/titulo.component';
+import { ContatosComponent } from './componentes/contatos/contatos.component';
+import { DashboardComponent } from './componentes/dashboard/dashboard.component';
+import { PerfilComponent } from './componentes/perfil/perfil.component';
 
 // Services da aplicação
 import { EventoService } from './services/evento.service';
@@ -12,7 +16,7 @@ import { EventoService } from './services/evento.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 // ngx-bootstrap
@@ -24,7 +28,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 
 // ngx
 import { ToastrModule } from 'ngx-toastr';
-import { NgxSpinnerModule } from "ngx-spinner";
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
     declarations: [
@@ -33,6 +37,10 @@ import { NgxSpinnerModule } from "ngx-spinner";
         PalestrantesComponent,
         NavegacaoComponent,
         DateTimeFormatPipe,
+        TituloComponent,
+        ContatosComponent,
+        DashboardComponent,
+        PerfilComponent,
     ],
     imports: [
         BrowserModule,

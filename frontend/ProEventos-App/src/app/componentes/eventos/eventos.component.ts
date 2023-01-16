@@ -1,5 +1,5 @@
-import { IEvento } from './../models/IEvento';
-import { EventoService } from './../services/evento.service';
+import { IEvento } from '../../models/IEvento';
+import { EventoService } from '../../services/evento.service';
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
@@ -62,7 +62,6 @@ export class EventosComponent implements OnInit {
             next: (_eventos: IEvento[]) => {
                 this.eventos = _eventos;
                 this.eventosFiltrados = this.eventos;
-                console.log(this.eventos);
             },
             erro: (error: any) => {
                 this.spinner.hide();
