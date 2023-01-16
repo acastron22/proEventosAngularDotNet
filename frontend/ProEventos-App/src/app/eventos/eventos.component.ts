@@ -1,7 +1,8 @@
 import { IEvento } from './../models/IEvento';
 import { EventoService } from './../services/evento.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 BrowserModule;
 
 @Component({
@@ -13,6 +14,9 @@ export class EventosComponent implements OnInit {
     public eventos: IEvento[] = [];
     public eventosFiltrados: IEvento[] = [];
     private _filtroLista: string = '';
+
+    modalRef?: BsModalRef;
+    message?: string;
 
     widthImg: number = 150;
     marginImg: number = 2;
@@ -39,7 +43,10 @@ export class EventosComponent implements OnInit {
         );
     }
 
-    constructor(private eventoService: EventoService) {}
+    constructor(
+        private eventoService: EventoService,
+        private modalService: BsModalService
+    ) {}
 
     ngOnInit(): void {
         this.getEventos();
@@ -60,8 +67,18 @@ export class EventosComponent implements OnInit {
 
     public showImgFunction(): void {
         this.showImg = !this.showImg;
-        this.showImg
-            ? (this.showText = 'Ocultar')
-            : (this.showText = 'Exibir');
+        this.showImg ? (this.showText = 'Ocultar') : (this.showText = 'Exibir');
+    }
+
+    openModal(template: TemplateRef<any>) {
+        this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
+    }
+
+    confirm(): void {
+        this.modalRef?.hide();
+    }
+
+    decline(): void {
+        this.modalRef?.hide();
     }
 }

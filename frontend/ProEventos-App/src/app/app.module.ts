@@ -20,6 +20,7 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { DateTimeFormatPipe } from './helpers/date-time-format.pipe';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
     declarations: [
@@ -38,6 +39,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
         FormsModule,
         TooltipModule,
         BsDropdownModule.forRoot(),
+        ModalModule.forRoot(),
     ],
     providers: [EventoService],
     bootstrap: [AppComponent],
