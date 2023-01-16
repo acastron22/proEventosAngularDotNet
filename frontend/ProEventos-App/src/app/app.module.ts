@@ -12,7 +12,7 @@ import { EventoService } from './services/evento.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 // ngx-bootstrap
@@ -21,6 +21,10 @@ import { DateTimeFormatPipe } from './helpers/date-time-format.pipe';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ModalModule } from 'ngx-bootstrap/modal';
+
+// ngx
+import { ToastrModule } from 'ngx-toastr';
+import { NgxSpinnerModule } from "ngx-spinner";
 
 @NgModule({
     declarations: [
@@ -40,7 +44,15 @@ import { ModalModule } from 'ngx-bootstrap/modal';
         TooltipModule,
         BsDropdownModule.forRoot(),
         ModalModule.forRoot(),
+        ToastrModule.forRoot({
+            timeOut: 5000,
+            positionClass: 'toast-bottom-right',
+            preventDuplicates: true,
+            progressBar: true,
+        }),
+        NgxSpinnerModule,
     ],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
     providers: [EventoService],
     bootstrap: [AppComponent],
 })
