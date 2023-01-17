@@ -1,6 +1,6 @@
 <app-titulo
     [titulo]="'Eventos'"
-    [iconClass]="'fa fa-ticket'"
+    [iconClass]="'fa fa-ticket d-none d-sm-block'"
     [subtitulo]="'Confira os eventos'"
     [botaoListar]="true"
 ></app-titulo>
@@ -10,18 +10,18 @@
         <div class="flex-fill pr-3">
             <div class="input-group mb-2">
                 <div class="input-group-prepend mr-2">
-                    <div class="input-group-text">Filtro:</div>
+                    <div class="input-group-text d-none d-sm-block">Filtro:</div>
                 </div>
                 <input
                     [(ngModel)]="filtroLista"
                     type="text"
-                    class="form-group-text "
+                    class="form-group-text"
                     placeholder="Filtrar por tema e local"
                 />
             </div>
         </div>
         <div>
-            <a class="d-flex btn btn-outline-primary" href="#">
+            <a class="d-flex btn btn-outline-primary mb-1" href="#">
                 <i class="fa fa-plus-circle my-1"></i>
                 <b class="ml-1 d-none d-sm-block">Novo</b>
             </a>
@@ -31,7 +31,7 @@
     <table class="table table-striped">
         <thead class="thead-dark">
             <tr>
-                <th [style.width.px]="200">
+                <th class="d-none d-lg-table-cell" [style.width.px]="200">
                     <button
                         (click)="showImgFunction()"
                         class="btn btn-secondary btn-sm"
@@ -44,18 +44,20 @@
                         {{ showText }}
                     </button>
                 </th>
-                <th>#</th>
+                <th class="d-none d-lg-table-cell">#</th>
                 <th>Tema</th>
-                <th>Local</th>
-                <th>Data</th>
-                <th>Qtd Pessoas</th>
-                <th>Lote</th>
+                <th class="d-none d-md-table-cell">Local</th>
+                <th>
+                    Data
+                </th>
+                <th class="d-none d-lg-table-cell">Qtd Pessoas</th>
+                <th class="d-none d-md-table-cell">Lote</th>
                 <th>Opções</th>
             </tr>
         </thead>
         <tbody *ngIf="eventos && eventos.length">
             <tr *ngFor="let evento of eventosFiltrados; let i = index">
-                <td>
+                <td class="d-none d-lg-table-cell">
                     <img
                         [collapse]="!showImg"
                         [isAnimated]="true"
@@ -65,18 +67,19 @@
                         [style.margin.px]="marginImg"
                     />
                 </td>
-                <td>{{ evento.id }}</td>
+                <td class="d-none d-lg-table-cell">{{ evento.id }}</td>
                 <td>{{ evento.tema }}</td>
-                <td>{{ evento.local }}</td>
-                <td>{{ evento.dataEvento | DateTimeFormat }}</td>
-                <td>{{ evento.qtdPessoas }}</td>
-                <td>{{ evento.lotes[0].nome }}</td>
+                <td class="d-none d-md-table-cell">{{ evento.local }}</td>
                 <td>
-                    <button class="btn btn-primary mx-1 my-1" tooltip="Editar">
-                        <i class="fa fa-edit"></i>
-                    </button>
+                    {{ evento.dataEvento | DateTimeFormat }}
+                </td>
+                <td class="d-none d-lg-table-cell">{{ evento.qtdPessoas }}</td>
+                <td class="d-none d-md-table-cell">
+                    {{ evento.lotes[0].nome }}
+                </td>
+                <td>
                     <button
-                        class="btn btn-danger mx-1 my-1"
+                        class="btn btn-danger btn-md mx-1 my-1"
                         tooltip="Excluir"
                         (click)="openModal(template)"
                     >
