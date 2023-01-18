@@ -8,7 +8,9 @@
         </div>
     </div>
     <div *ngIf="botaoListar">
-        <button class="btn btn-outline-light p-3">Listar {{ titulo }}</button>
+        <button class="btn btn-outline-light p-3" (click)="listar()">
+            Listar {{ titulo }}
+        </button>
     </div>
 
     <div></div>

@@ -10,11 +10,13 @@
     "Persistence",
     "Persistente",
     "Redirection",
+    "routerlink",
     "spinner",
     "Spinner",
     "Sqlite",
     "swagger",
     "Swagger",
+    "toast",
     "toastr"
   ]
 }
