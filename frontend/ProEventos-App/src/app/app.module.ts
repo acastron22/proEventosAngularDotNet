@@ -31,6 +31,9 @@ import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { EventoDetalheComponent } from './componentes/eventos/evento-detalhe/evento-detalhe.component';
 import { EventoListaComponent } from './componentes/eventos/evento-lista/evento-lista.component';
+import { UserComponent } from './componentes/user/user.component';
+import { LoginComponent } from './componentes/user/login/login.component';
+import { RegistrarComponent } from './componentes/user/registrar/registrar.component';
 
 @NgModule({
     declarations: [
@@ -45,6 +48,9 @@ import { EventoListaComponent } from './componentes/eventos/evento-lista/evento-
         PerfilComponent,
         EventoDetalheComponent,
         EventoListaComponent,
+        UserComponent,
+        LoginComponent,
+        RegistrarComponent,
     ],
     imports: [
         BrowserModule,
