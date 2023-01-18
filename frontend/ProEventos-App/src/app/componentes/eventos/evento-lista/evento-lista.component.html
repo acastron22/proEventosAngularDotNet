@@ -52,7 +52,11 @@
             </tr>
         </thead>
         <tbody *ngIf="eventos && eventos.length">
-            <tr *ngFor="let evento of eventosFiltrados; let i = index">
+            <tr
+                *ngFor="let evento of eventosFiltrados; let i = index"
+                (click)="detalheEvento(evento.id)"
+                style="cursor: pointer"
+            >
                 <td class="d-none d-lg-table-cell">
                     <img
                         [collapse]="!showImg"

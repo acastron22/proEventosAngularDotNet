@@ -9,6 +9,7 @@ import { ContatosComponent } from './componentes/contatos/contatos.component';
 import { EventoListaComponent } from './componentes/eventos/evento-lista/evento-lista.component';
 
 const routes: Routes = [
+    { path: 'eventos', redirectTo: 'eventos/lista', pathMatch: 'full' },
     {
         path: 'eventos',
         component: EventosComponent,
