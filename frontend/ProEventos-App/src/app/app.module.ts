@@ -7,7 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { TituloComponent } from './shared/titulo/titulo.component';
 import { ContatosComponent } from './componentes/contatos/contatos.component';
 import { DashboardComponent } from './componentes/dashboard/dashboard.component';
-import { PerfilComponent } from './componentes/perfil/perfil.component';
+import { PerfilComponent } from './componentes/user/perfil/perfil.component';
 
 // Services da aplicação
 import { EventoService } from './services/evento.service';

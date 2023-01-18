@@ -1,15 +1,24 @@
-import { RegistrarComponent } from './componentes/user/registrar/registrar.component';
-import { UserComponent } from './componentes/user/user.component';
-import { EventoDetalheComponent } from './componentes/eventos/evento-detalhe/evento-detalhe.component';
-import { EventosComponent } from './componentes/eventos/eventos.component';
+// imports angular
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
+// telas básicas
 import { DashboardComponent } from './componentes/dashboard/dashboard.component';
-import { PerfilComponent } from './componentes/perfil/perfil.component';
-import { PalestrantesComponent } from './componentes/palestrantes/palestrantes.component';
 import { ContatosComponent } from './componentes/contatos/contatos.component';
-import { EventoListaComponent } from './componentes/eventos/evento-lista/evento-lista.component';
+
+//tela palestrantes
+import { PalestrantesComponent } from './componentes/palestrantes/palestrantes.component';
+
+// telas de usuário - registro e login
+import { UserComponent } from './componentes/user/user.component';
 import { LoginComponent } from './componentes/user/login/login.component';
+import { RegistrarComponent } from './componentes/user/registrar/registrar.component';
+import { PerfilComponent } from './componentes/user/perfil/perfil.component';
+
+// telas do eventos - lista de eventos e detalhe do evento
+import { EventosComponent } from './componentes/eventos/eventos.component';
+import { EventoListaComponent } from './componentes/eventos/evento-lista/evento-lista.component';
+import { EventoDetalheComponent } from './componentes/eventos/evento-detalhe/evento-detalhe.component';
 
 const routes: Routes = [
     { path: 'eventos', redirectTo: 'eventos/lista', pathMatch: 'full' },
@@ -30,10 +39,10 @@ const routes: Routes = [
             { path: 'registrar', component: RegistrarComponent },
         ],
     },
+    { path: 'user/perfil', component: PerfilComponent },
     { path: 'contatos', component: ContatosComponent },
     { path: 'dashboard', component: DashboardComponent },
     { path: 'palestrantes', component: PalestrantesComponent },
-    { path: 'perfil', component: PerfilComponent },
     { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
     { path: '**', redirectTo: 'dashboard', pathMatch: 'full' },
 ];
