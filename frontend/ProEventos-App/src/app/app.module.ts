@@ -17,7 +17,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // ngx-bootstrap
 import { CollapseModule } from 'ngx-bootstrap/collapse';
@@ -69,6 +69,7 @@ import { RegistrarComponent } from './componentes/user/registrar/registrar.compo
             progressBar: true,
         }),
         NgxSpinnerModule,
+        ReactiveFormsModule,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     providers: [EventoService],
