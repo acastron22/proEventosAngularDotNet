@@ -163,16 +163,29 @@
         </div>
       </div>
       <div class="form-row p-1 mb-3">
-        <div class="form-group form-check">
-          <input
-            type="checkbox"
-            value="{{ checkbox }}"
-            class="form-check-input"
-            id="exampleCheck1"
-          />
-          <label class="form-check-label" for="exampleCheck1"
-            >Check me out</label
-          >
+        <div class="form-group">
+          <div class="form-check">
+            <input
+              (click)="termoaceito()"
+              type="checkbox"
+              value="{{ checkbox }}"
+              class="form-check-input"
+              id="exampleCheck1"
+              formControlName="termo"
+              [ngClass]="{
+                'is-invalid': registro.termo?.errors && registro.termo?.touched
+              }"
+            />
+            <label class="form-check-label" for="exampleCheck1"
+              >Aceito os termos de contrato
+            </label>
+            <div
+              *ngIf="registro.termo.errors?.pattern"
+              class="invalid-feedback"
+            >
+              Para registrar, é preciso concordar com os termos.
+            </div>
+          </div>
         </div>
       </div>
       <div class="form-row">

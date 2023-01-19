@@ -15,7 +15,7 @@ import { Router } from '@angular/router';
 })
 export class RegistrarComponent implements OnInit {
   form: FormGroup = this.formBuilder.group({});
-  checkbox: boolean = false;
+  checkbox?: boolean = false;
 
   get registro(): any {
     return this.form.controls;
@@ -25,12 +25,12 @@ export class RegistrarComponent implements OnInit {
 
   ngOnInit(): void {
     this.validacaoRegistro();
+    console.log(this.checkbox);
   }
-
 
   validacaoRegistro(): void {
     const formOptions: AbstractControlOptions = {
-      validators: ValidatorFields.MustMatch('senha', 'confirmaSenha')
+      validators: ValidatorFields.MustMatch('senha', 'confirmaSenha'),
     };
 
     this.form = this.formBuilder.group(
@@ -48,8 +48,14 @@ export class RegistrarComponent implements OnInit {
         ],
         senha: ['', [Validators.required, Validators.minLength(8)]],
         confirmaSenha: ['', [Validators.required]],
+        termo: ['', [Validators.required, Validators.pattern('true')]],
       },
       formOptions
     );
+  }
+
+  termoaceito(): void {
+    this.checkbox = !this.checkbox;
+    console.log(this.checkbox);
   }
 }
