@@ -190,14 +190,19 @@
       </div>
       <div class="form-row">
         <div class="form-group col-12">
-          <button class="btn btn-lg btn-success btn-block px-5">
+          <button
+            [disabled]="!form.valid"
+            class="btn btn-lg btn-success btn-block px-5"
+          >
             Registar
           </button>
         </div>
       </div>
       <div class="form-row">
         <div class="form-group col-12">
-          <a class="btn btn-link btn-block"> Já sou Cadastrado </a>
+          <a class="btn btn-link btn-block" (click)="resetForm()">
+            Já sou Cadastrado
+          </a>
         </div>
       </div>
     </form>

@@ -25,7 +25,6 @@ export class RegistrarComponent implements OnInit {
 
   ngOnInit(): void {
     this.validacaoRegistro();
-    console.log(this.checkbox);
   }
 
   validacaoRegistro(): void {
@@ -57,5 +56,10 @@ export class RegistrarComponent implements OnInit {
   termoaceito(): void {
     this.checkbox = !this.checkbox;
     console.log(this.checkbox);
+  }
+
+  resetForm(): void {
+    this.form.reset;
+    this.router.navigate(['/user/login']);
   }
 }
