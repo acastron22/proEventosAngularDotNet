@@ -14,6 +14,8 @@ import { Router } from '@angular/router';
 export class EventoListaComponent implements OnInit {
   public eventos: IEvento[] = [];
   public eventosFiltrados: IEvento[] = [];
+  public eventoName: string = '';
+
   private _filtroLista: string = '';
 
   modalRef?: BsModalRef;
@@ -80,13 +82,18 @@ export class EventoListaComponent implements OnInit {
     this.showImg ? (this.showText = 'Ocultar') : (this.showText = 'Exibir');
   }
 
-  openModal(template: TemplateRef<any>) {
+  openModal(event: any, template: TemplateRef<any>, eventoName: string) {
+    event.stopPropagation();
+    this.eventoName = eventoName;
     this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
   }
 
   confirm(): void {
     this.modalRef?.hide();
-    this.toastr.success('O evento foi deletado!', 'Deletado!');
+    this.toastr.success(
+      `O evento ${this.eventoName} foi deletado!`,
+      'Deletado!'
+    );
   }
 
   decline(): void {
