@@ -57,4 +57,8 @@ export class EventoDetalheComponent implements OnInit {
     this.form.reset();
     this.router.navigate(['/eventos/lista']);
   }
+
+  cssValidator(campoForm: FormControl): any {
+    return { 'is-invalid': campoForm.errors && campoForm.touched };
+  }
 }
