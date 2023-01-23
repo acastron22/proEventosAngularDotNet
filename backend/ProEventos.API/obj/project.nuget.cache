@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "o5ULPDmPrhfx6Oiux9MR/NqBW9TkUgcAkqBBNXyDgit1ZZCUE85H+j77bNv1gsy2TYjkPiq8YllEFM6AQprZRw==",
+  "dgSpecHash": "kv7uQA6tVNx3qMbVnRC3FU12XIngHScUJEZSsm7wE0S/8NtcEVphAg0dIY9daUJw/7xKo9wNJprZiFk/pDPlzQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\ariel\\Desktop\\Estudos\\Angular_ProEventos_FullStack\\backend\\ProEventos.API\\ProEventos.API.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\ariel\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
+    "C:\\Users\\ariel\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",
     "C:\\Users\\ariel\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\ariel\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\5.0.17\\microsoft.aspnetcore.jsonpatch.5.0.17.nupkg.sha512",
     "C:\\Users\\ariel\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\5.0.17\\microsoft.aspnetcore.mvc.newtonsoftjson.5.0.17.nupkg.sha512",
@@ -45,7 +47,8 @@
     "C:\\Users\\ariel\\.nuget\\packages\\system.collections.immutable\\5.0.0\\system.collections.immutable.5.0.0.nupkg.sha512",
     "C:\\Users\\ariel\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0\\system.componentmodel.annotations.5.0.0.nupkg.sha512",
     "C:\\Users\\ariel\\.nuget\\packages\\system.diagnostics.diagnosticsource\\5.0.1\\system.diagnostics.diagnosticsource.5.0.1.nupkg.sha512",
-    "C:\\Users\\ariel\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512"
+    "C:\\Users\\ariel\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
+    "C:\\Users\\ariel\\.nuget\\packages\\system.reflection.emit\\4.7.0\\system.reflection.emit.4.7.0.nupkg.sha512"
   ],
   "logs": []
 }

@@ -165,3 +165,5 @@ C:\Users\ariel.neves\Desktop\Estudos\Angular_ProEventos_FullStack\backend\ProEve
 C:\Users\ariel.neves\Desktop\Estudos\Angular_ProEventos_FullStack\backend\ProEventos.API\obj\Debug\net5.0\ref\ProEventos.API.dll
 C:\Users\ariel.neves\Desktop\Estudos\Angular_ProEventos_FullStack\backend\ProEventos.API\obj\Debug\net5.0\ProEventos.API.pdb
 C:\Users\ariel.neves\Desktop\Estudos\Angular_ProEventos_FullStack\backend\ProEventos.API\obj\Debug\net5.0\ProEventos.API.genruntimeconfig.cache
+C:\Users\ariel\Desktop\Estudos\Angular_ProEventos_FullStack\backend\ProEventos.API\bin\Debug\net5.0\AutoMapper.dll
+C:\Users\ariel\Desktop\Estudos\Angular_ProEventos_FullStack\backend\ProEventos.API\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
