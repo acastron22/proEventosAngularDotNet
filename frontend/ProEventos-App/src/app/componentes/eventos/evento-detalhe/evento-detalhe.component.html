@@ -51,7 +51,9 @@
             class="form-control is-invalid"
             [ngClass]="cssValidator(f.dataEvento)"
             formControlName="dataEvento"
-            placeholder="dd/MM/yyyy hh:mm"
+            bsDatepicker
+            [bsConfig]="bsConfig"
+            placeholder="dd.MM.yyyy hh:mm"
           />
           <div *ngIf="f.dataEvento.errors?.required" class="invalid-feedback">
             Data e Hora são obrigatórios

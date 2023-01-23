@@ -25,6 +25,7 @@ import { DateTimeFormatPipe } from './helpers/date-time-format.pipe';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 // ngx
 import { ToastrModule } from 'ngx-toastr';
@@ -69,7 +70,8 @@ import { RegistrarComponent } from './componentes/user/registrar/registrar.compo
             progressBar: true,
         }),
         NgxSpinnerModule,
-        ReactiveFormsModule,
+      ReactiveFormsModule,
+      BsDatepickerModule.forRoot(),
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     providers: [EventoService],
