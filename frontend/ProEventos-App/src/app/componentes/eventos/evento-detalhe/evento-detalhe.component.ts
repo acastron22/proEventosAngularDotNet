@@ -1,15 +1,17 @@
-import { EventoService } from './../../../services/evento.service';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import {
   FormBuilder,
   FormControl,
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+
 import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
+
+import { EventoService } from './../../../services/evento.service';
 import { IEvento } from 'src/app/models/IEvento';
 
 @Component({
@@ -63,7 +65,7 @@ export class EventoDetalheComponent implements OnInit {
         },
         error: (error: any) => {
           this.spinner.hide();
-          this.toastr.error('Erro ao Carregar os Eventos', 'Erro!');
+          this.toastr.error('Erro ao Carregar o Evento', 'Erro!');
         },
         complete: () => {
           this.spinner.hide();
