@@ -6,6 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 
 @Component({
   selector: 'app-evento-detalhe',
@@ -28,7 +29,13 @@ export class EventoDetalheComponent implements OnInit {
     };
   }
 
-  constructor(private formBuilder: FormBuilder, private router: Router) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private localeService: BsLocaleService
+  ) {
+    this.localeService.use('pt-br');
+  }
 
   ngOnInit(): void {
     this.validation();
