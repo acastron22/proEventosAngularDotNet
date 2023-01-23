@@ -135,7 +135,11 @@
         >
           Cancelar Alteração
         </button>
-        <button class="btn btn-success" [disabled]="!form.valid">
+        <button
+          class="btn btn-success"
+          [disabled]="!form.valid"
+          (click)="salvarEvento()"
+        >
           <!-- <span class="spinner-border spinner-border-sm mr-1"></span> -->
           Salvar Evento
         </button>

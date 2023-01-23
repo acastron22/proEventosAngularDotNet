@@ -51,11 +51,13 @@ export class EventoDetalheComponent implements OnInit {
   ngOnInit(): void {
     this.spinner.show();
     this.carregarevento();
+    console.log(this.carregarevento);
     this.validation();
   }
 
   carregarevento(): void {
     const eventoIdParam = this.activeRouter.snapshot.paramMap.get('id');
+    console.log(eventoIdParam);
 
     if (eventoIdParam !== null) {
       this.eventoService.getEventoById(+eventoIdParam).subscribe({
@@ -71,6 +73,8 @@ export class EventoDetalheComponent implements OnInit {
           this.spinner.hide();
         },
       });
+    } else {
+      this.spinner.hide();
     }
   }
 
@@ -110,5 +114,25 @@ export class EventoDetalheComponent implements OnInit {
 
   cssValidator(campoForm: FormControl): any {
     return { 'is-invalid': campoForm.errors && campoForm.touched };
+  }
+
+  salvarEvento(): void {
+    this.spinner.show();
+    if (this.form.valid) {
+      this.evento = { ...this.form.value };
+
+      this.eventoService.postEvento(this.evento).subscribe(
+        () => this.toastr.success('Eveno salvo com sucesso', 'Sucesso'),
+        (error: any) => {
+          console.error(error);
+          this.spinner.hide();
+          this.toastr.error('Erro ao salvar o evento', 'Erro');
+        },
+        () => this.spinner.hide()
+      );
+    }
+
+    this.router.navigate(['/eventos/lista']);
+
   }
 }
