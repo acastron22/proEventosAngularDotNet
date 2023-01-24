@@ -12,7 +12,7 @@ export class DateTimeFormatPipe extends DatePipe implements PipeTransform {
     let year = value.substring(6, 10);
     let hour = value.substring(11, 13);
     let minutes = value.substring(14, 16);
-    value = day + '/' + month + '/' + year + ' ' + hour + ':' + minutes;
+    value = day + '.' + month + '.' + year + ' ' + hour + ':' + minutes;
     return super.transform(value, Constants.DATE_TIME_FMT);
   }
 }

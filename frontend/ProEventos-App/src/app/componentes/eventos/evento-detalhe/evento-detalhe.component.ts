@@ -22,6 +22,8 @@ import { IEvento } from 'src/app/models/IEvento';
 export class EventoDetalheComponent implements OnInit {
   evento = {} as IEvento;
   form: FormGroup = this.formBuilder.group({});
+  estadoSalvar= 'post';
+
   get f(): any {
     return this.form.controls;
   }
@@ -57,9 +59,12 @@ export class EventoDetalheComponent implements OnInit {
 
   carregarevento(): void {
     const eventoIdParam = this.activeRouter.snapshot.paramMap.get('id');
-    console.log(eventoIdParam);
 
     if (eventoIdParam !== null) {
+      this.spinner.show();
+
+      this.estadoSalvar = 'put';
+
       this.eventoService.getEventoById(+eventoIdParam).subscribe({
         next: (evento: IEvento) => {
           this.evento = { ...evento };
@@ -119,10 +124,14 @@ export class EventoDetalheComponent implements OnInit {
   salvarEvento(): void {
     this.spinner.show();
     if (this.form.valid) {
-      this.evento = { ...this.form.value };
 
-      this.eventoService.postEvento(this.evento).subscribe(
-        () => this.toastr.success('Eveno salvo com sucesso', 'Sucesso'),
+      this.evento = (this.estadoSalvar === 'post')
+        ? { ... this.form.value }
+        : { id: this.evento.id, ...this.form.value };
+
+
+      this.eventoService[this.estadoSalvar](this.evento).subscribe(
+        () => this.toastr.success('Evento salvo com sucesso', 'Sucesso'),
         (error: any) => {
           console.error(error);
           this.spinner.hide();
@@ -131,8 +140,5 @@ export class EventoDetalheComponent implements OnInit {
         () => this.spinner.hide()
       );
     }
-
-    this.router.navigate(['/eventos/lista']);
-
   }
 }

@@ -100,27 +100,27 @@ export class EventoListaComponent implements OnInit {
     this.modalRef?.hide();
     this.spinner.show();
 
-
-    this.eventoService.deleteEvento(this.eventoId).subscribe(
-      (result: any) => {
-        console.log(result);
-        this.toastr.success(
-          `O evento ${this.eventoName} foi deletado!`,
-          'Deletado!'
-        );
-        this.spinner.hide();
-        this.carregarEventos();
-      },
-      (error: any) => {
-        console.error(error);
-        this.toastr.error(
-          `Erro ao tentar deletar o evento ${this.eventoName}`,
-          'Erro'
-        );
-        this.spinner.hide();
-      },
-      () => this.spinner.hide()
-    );
+    this.eventoService
+      .deleteEvento(this.eventoId)
+      .subscribe({
+        next: (result: any) => {
+          if (result.message === 'Deletado') {
+            this.toastr.success(
+              `O evento ${this.eventoName} foi deletado com sucesso.`,
+              'Deletado!'
+            );
+            this.carregarEventos();
+          }
+        },
+        error: (error: any) => {
+          console.error(error);
+          this.toastr.error(
+            `Erro ao tentar deletar o evento ${this.eventoName}`,
+            'Error'
+          );
+        }
+      })
+      .add(() => this.spinner.hide);
   }
 
   decline(): void {

@@ -1,7 +1,7 @@
 import { IEvento } from './../models/IEvento';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, take } from 'rxjs';
 
 @Injectable()
 export class EventoService {
@@ -10,21 +10,23 @@ export class EventoService {
   constructor(private http: HttpClient) {}
 
   getEvento(): Observable<IEvento[]> {
-    return this.http.get<IEvento[]>(this.baseUrl);
+    return this.http.get<IEvento[]>(this.baseUrl).pipe(take(1));
   }
   getEventosByTema(tema: string): Observable<IEvento> {
-    return this.http.get<IEvento>(`${this.baseUrl}/${tema}/tema`);
+    return this.http.get<IEvento>(`${this.baseUrl}/${tema}/tema`).pipe(take(1));
   }
   getEventoById(id: number): Observable<IEvento> {
-    return this.http.get<IEvento>(`${this.baseUrl}/${id}`);
+    return this.http.get<IEvento>(`${this.baseUrl}/${id}`).pipe(take(1));
   }
-  postEvento(evento: IEvento): Observable<IEvento> {
-    return this.http.post<IEvento>(this.baseUrl, evento);
+  post(evento: IEvento): Observable<IEvento> {
+    return this.http.post<IEvento>(this.baseUrl, evento).pipe(take(1));
   }
-  putEvento(id: number, evento: IEvento): Observable<IEvento> {
-    return this.http.put<IEvento>(`${this.baseUrl}/${id}`, evento);
+  put(evento: IEvento): Observable<IEvento> {
+    return this.http
+      .put<IEvento>(`${this.baseUrl}/${evento.id}`, evento)
+      .pipe(take(1));
   }
   deleteEvento(id: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/${id}`);
+    return this.http.delete(`${this.baseUrl}/${id}`).pipe(take(1));
   }
 }
