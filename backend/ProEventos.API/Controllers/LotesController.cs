@@ -40,7 +40,7 @@ namespace ProEventos.API.Controllers
             try
             {
                 var lotes = await _loteService.SaveLotes(eventoId, models);
-                if (lotes == null) return BadRequest("Error. Lote não pode ser adicionado");
+                if (lotes == null) return NoContent();
 
                 return Ok(lotes);
             }
