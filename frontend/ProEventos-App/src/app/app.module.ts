@@ -11,6 +11,7 @@ import { PerfilComponent } from './componentes/user/perfil/perfil.component';
 
 // Services da aplicação
 import { EventoService } from './services/evento.service';
+import { LoteService } from './services/lote.service';
 
 // Angular Components
 import { BrowserModule } from '@angular/platform-browser';
@@ -79,7 +80,7 @@ defineLocale('pt-br', ptBrLocale);
     BsDatepickerModule.forRoot(),
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [EventoService],
+  providers: [EventoService, LoteService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
