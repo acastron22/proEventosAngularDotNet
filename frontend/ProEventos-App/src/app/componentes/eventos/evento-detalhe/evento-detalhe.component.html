@@ -148,7 +148,7 @@
   </form>
 </div>
 
-<div class="card rounded shadow-sm mt-4">
+<div class="card rounded shadow-sm mt-4" *ngIf="modoEditar">
   <div class="p-3">
     <div class="d-flex border-bottom">
       <h2 class="mr-auto">Lotes do Evento</h2>
@@ -191,6 +191,7 @@
                 <label>Quantidade</label>
                 <input
                   type="text"
+                  [ngClass]="cssValidator(lotes.get(i + '.quantidade'))"
                   class="form-control"
                   formControlName="quantidade"
                   placeholder="000"
@@ -199,6 +200,7 @@
               <div class="form-group col-md-4">
                 <label>Preço</label>
                 <input
+                [ngClass]="cssValidator(lotes.get(i + '.preco'))"
                   type="text"
                   currencyMask
                   class="form-control"
@@ -243,3 +245,4 @@
     </div>
   </div>
 </div>
+<br>

@@ -41,6 +41,10 @@ export class EventoDetalheComponent implements OnInit {
     };
   }
 
+  get modoEditar(): boolean {
+    return this.estadoSalvar === 'put';
+  }
+
   get lotes(): FormArray {
     return this.form.get('lotes') as FormArray;
   }
@@ -128,10 +132,7 @@ export class EventoDetalheComponent implements OnInit {
     return this.formBuilder.group({
       id: [lote.id, [Validators.required]],
       nome: [lote.nome, [Validators.required]],
-      preco: [
-        lote.preco,
-        [Validators.required, Validators.pattern('^[0-9]*$')],
-      ],
+      preco: [lote.preco, [Validators.required]],
       quantidade: [
         lote.quantidade,
         [Validators.required, Validators.pattern('^[0-9]*$')],
@@ -159,7 +160,11 @@ export class EventoDetalheComponent implements OnInit {
           : { id: this.evento.id, ...this.form.value };
 
       this.eventoService[this.estadoSalvar](this.evento).subscribe(
-        () => this.toastr.success('Evento salvo com sucesso', 'Sucesso'),
+        (eventoRetorno: IEvento) =>{
+
+          this.toastr.success('Evento salvo com sucesso', 'Sucesso');
+          this.router.navigate([`eventos/detalhe/${eventoRetorno.id}`]);
+        },
         (error: any) => {
           console.error(error);
           this.spinner.hide();
