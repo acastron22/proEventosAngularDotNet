@@ -49,10 +49,11 @@
           <input
             type="datetime"
             class="form-control is-invalid"
+            value="{{evento.dataEvento | DateFormatPipe}"
             [ngClass]="cssValidator(f.dataEvento)"
-            formControlName="dataEvento"
             bsDatepicker
             [bsConfig]="bsConfig"
+            formControlName="dataEvento"
             placeholder="dd.MM.yyyy hh:mm"
           />
           <div *ngIf="f.dataEvento.errors?.required" class="invalid-feedback">
@@ -168,7 +169,7 @@
           <fieldset [formGroupName]="i" class="form-group">
             <legend class="d-flex justify-content-between capitalize">
               <button
-                (click)="removerLote(template,i)"
+                (click)="removerLote(template, i)"
                 class="p-2 btn btn-sm btn-outline-warning mb-1 d-flex"
                 tooltip="Excluir Lote"
                 [adaptivePosition]="false"
@@ -214,19 +215,29 @@
               <div class="form-group col-md-4">
                 <label>Data Início</label>
                 <input
-                  type="text"
+                  type="datetime"
                   class="form-control"
+                  bsDatepicker
+                  value="{{
+                    lotes.get(i + '.dataInicio')!.value | date : 'dd.MM.yyyy'
+                  }}"
                   formControlName="dataInicio"
-                  placeholder="01/01/2019"
+                  placeholder="01.01.2019"
+                  (bsValueChange)="mudarValorData($event, i, 'dataInicio')"
                 />
               </div>
               <div class="form-group col-md-4">
                 <label>Data Fim</label>
                 <input
-                  type="text"
+                  type="datetime"
                   class="form-control"
+                  bsDatepicker
+                  value="{{
+                    lotes.get(i + '.dataInicio')!.value | date : 'dd.MM.yyyy'
+                  }}"
                   formControlName="dataFim"
-                  placeholder="01/01/2019"
+                  placeholder="01.01.2019"
+                  (bsValueChange)="mudarValorData($event, i, 'dataFim')"
                 />
               </div>
             </div>
@@ -244,7 +255,11 @@
       <button class="btn btn-outline-secondary mr-auto border">
         Cancelar Alteração
       </button>
-      <button class="btn btn-success" (click)="salvarLote()">
+      <button
+        class="btn btn-success"
+        (click)="salvarLote()"
+        [disabled]="!form.controls['lotes'].valid"
+      >
         Salvar Lotes
       </button>
     </div>

@@ -79,7 +79,7 @@ export class EventoDetalheComponent implements OnInit {
   carregarevento(): void {
     this.eventoId = +this.activeRouter.snapshot.paramMap.get('id')!;
 
-    if (this.eventoId !== null || this.eventoId === 0) {
+    if (this.eventoId !== null && this.eventoId !== 0) {
       this.spinner.show();
 
       this.estadoSalvar = 'put';
@@ -117,7 +117,7 @@ export class EventoDetalheComponent implements OnInit {
       .add(() => this.spinner.hide());
   }
 
-  public validation(): void {
+  validation(): void {
     this.form = this.formBuilder.group({
       tema: [
         '',
@@ -165,6 +165,10 @@ export class EventoDetalheComponent implements OnInit {
     });
   }
 
+  mudarValorData(value: Date, indice: number, campo: string): void {
+    this.lotes.value[indice][campo] = value;
+  }
+
   resetForm(): void {
     this.form.reset();
     this.router.navigate(['/eventos/lista']);
@@ -175,8 +179,8 @@ export class EventoDetalheComponent implements OnInit {
   }
 
   salvarEvento(): void {
-    this.spinner.show();
     if (this.form.valid) {
+      this.spinner.show();
       this.evento =
         this.estadoSalvar === 'post'
           ? { ...this.form.value }
@@ -198,14 +202,14 @@ export class EventoDetalheComponent implements OnInit {
   }
 
   public salvarLote(): void {
-    this.spinner.show();
     if (this.form.controls['lotes'].valid) {
+      this.spinner.show();
       this.loteService
         .saveLote(this.eventoId!, this.form.value.lotes)
         .subscribe(
           () => {
             this.toastr.success('Lotes salvos com Sucesso!', 'Sucesso!');
-            this.lotes.reset();
+
           },
           (error: any) => {
             this.toastr.error('Erro ao tentar salvar lotes.', 'Error!');
