@@ -150,8 +150,6 @@
 </div>
 
 <div class="card rounded shadow-sm mt-4" *ngIf="modoEditar">
-  <p>Form value: {{ form.controls["lotes"].value | json }}</p>
-  <p>Form value: {{ form.controls["lotes"].status | json }}</p>
   <div class="p-3">
     <div class="d-flex border-bottom">
       <h2 class="mr-auto">Lotes do Evento</h2>
@@ -168,6 +166,7 @@
         >
           <fieldset [formGroupName]="i" class="form-group">
             <legend class="d-flex justify-content-between capitalize">
+              {{ retornaTituloLote(lotes.get(i + ".nome")!.value) }}
               <button
                 (click)="removerLote(template, i)"
                 class="p-2 btn btn-sm btn-outline-warning mb-1 d-flex"
@@ -205,6 +204,13 @@
                 <label>Preço</label>
                 <input
                   [ngClass]="cssValidator(lotes.get(i + '.preco'))"
+                  currencyMask
+                  [options]="{
+                    prefix: 'R$ ',
+                    thousands: '.',
+                    decimal: ',',
+                    align: 'left'
+                  }"
                   type="text"
                   currencyMask
                   class="form-control"

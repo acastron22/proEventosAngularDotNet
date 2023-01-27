@@ -117,6 +117,10 @@ export class EventoDetalheComponent implements OnInit {
       .add(() => this.spinner.hide());
   }
 
+  retornaTituloLote(nome: string): string {
+    return nome === null || nome === '' ? 'Nome do lote' : nome;
+  }
+
   validation(): void {
     this.form = this.formBuilder.group({
       tema: [
@@ -209,7 +213,6 @@ export class EventoDetalheComponent implements OnInit {
         .subscribe(
           () => {
             this.toastr.success('Lotes salvos com Sucesso!', 'Sucesso!');
-
           },
           (error: any) => {
             this.toastr.error('Erro ao tentar salvar lotes.', 'Error!');

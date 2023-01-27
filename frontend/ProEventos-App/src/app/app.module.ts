@@ -8,6 +8,11 @@ import { TituloComponent } from './shared/titulo/titulo.component';
 import { ContatosComponent } from './componentes/contatos/contatos.component';
 import { DashboardComponent } from './componentes/dashboard/dashboard.component';
 import { PerfilComponent } from './componentes/user/perfil/perfil.component';
+import { EventoDetalheComponent } from './componentes/eventos/evento-detalhe/evento-detalhe.component';
+import { EventoListaComponent } from './componentes/eventos/evento-lista/evento-lista.component';
+import { UserComponent } from './componentes/user/user.component';
+import { LoginComponent } from './componentes/user/login/login.component';
+import { RegistrarComponent } from './componentes/user/registrar/registrar.component';
 
 // Services da aplicação
 import { EventoService } from './services/evento.service';
@@ -34,11 +39,7 @@ import { ptBrLocale } from 'ngx-bootstrap/locale';
 // ngx
 import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from 'ngx-spinner';
-import { EventoDetalheComponent } from './componentes/eventos/evento-detalhe/evento-detalhe.component';
-import { EventoListaComponent } from './componentes/eventos/evento-lista/evento-lista.component';
-import { UserComponent } from './componentes/user/user.component';
-import { LoginComponent } from './componentes/user/login/login.component';
-import { RegistrarComponent } from './componentes/user/registrar/registrar.component';
+import { NgxCurrencyModule } from 'ngx-currency';
 
 defineLocale('pt-br', ptBrLocale);
 
@@ -78,6 +79,7 @@ defineLocale('pt-br', ptBrLocale);
     NgxSpinnerModule,
     ReactiveFormsModule,
     BsDatepickerModule.forRoot(),
+    NgxCurrencyModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [EventoService, LoteService],
