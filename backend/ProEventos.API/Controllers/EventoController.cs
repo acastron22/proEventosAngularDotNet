@@ -87,7 +87,7 @@ namespace ProEventos.API.Controllers
                 $"Erro ao tentar publicar evento. Erro: {ex.Message}");
             }
         }
-        [HttpPost("upload-image/{eventoId")]
+        [HttpPost("upload-image/{eventoId}")]
         public async Task<IActionResult> UploadImage(int eventoId)
         {
             try
