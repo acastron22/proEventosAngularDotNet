@@ -26,6 +26,7 @@ import { LoteService } from 'src/app/services/lote.service';
 })
 export class EventoDetalheComponent implements OnInit {
   modalRef?: BsModalRef;
+  eventoData?: Date;
   eventoNome?: string;
   eventoId?: number;
   evento = {} as IEvento;
@@ -74,7 +75,6 @@ export class EventoDetalheComponent implements OnInit {
   ngOnInit(): void {
     this.spinner.show();
     this.carregarevento();
-    console.log(this.carregarevento);
     this.validation();
   }
 
@@ -89,8 +89,9 @@ export class EventoDetalheComponent implements OnInit {
       this.eventoService.getEventoById(this.eventoId).subscribe({
         next: (evento: IEvento) => {
           this.evento = { ...evento };
+          this.eventoData = this.evento.dataEvento;
           this.form.patchValue(this.evento);
-          this.carregarLotes();
+          // this.carregarLotes();
         },
         error: (error: any) => {
           this.spinner.hide();
@@ -99,7 +100,7 @@ export class EventoDetalheComponent implements OnInit {
       });
     } else {
       this.spinner.hide();
-    }
+    } this.carregarLotes()
   }
 
   carregarLotes(): void {
@@ -279,7 +280,7 @@ export class EventoDetalheComponent implements OnInit {
         },
         (error: any) => {
           console.error('Erro ao fazer o upload de imagem', 'Erro!');
-          console.log(error)
+          console.log(error);
         }
       )
       .add(() => this.spinner.hide());

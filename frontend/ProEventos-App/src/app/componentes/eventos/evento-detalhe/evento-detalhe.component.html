@@ -234,7 +234,7 @@
                       bsDatepicker
                       value="{{
                         lotes.get(i + '.dataInicio')!.value
-                          | date : 'dd.MM.yyyy'
+                        | date:'DD.MM/YYYY'
                       }}"
                       formControlName="dataInicio"
                       placeholder="01.01.2019"
@@ -248,8 +248,7 @@
                       class="form-control"
                       bsDatepicker
                       value="{{
-                        lotes.get(i + '.dataInicio')!.value
-                          | date : 'dd.MM.yyyy'
+                        lotes.get(i + '.dataInicio')!.value | DateTimeFormat
                       }}"
                       formControlName="dataFim"
                       placeholder="01.01.2019"
@@ -322,7 +321,7 @@
 
             <br />
 
-            <b>Data:</b> {{ evento.dataEvento | DateTimeFormat }}
+            <b>Data:</b> {{ eventoData | DateTimeFormat }}
           </p>
 
           <hr />
