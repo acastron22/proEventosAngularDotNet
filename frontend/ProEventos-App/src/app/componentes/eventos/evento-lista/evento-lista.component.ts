@@ -5,6 +5,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { IEvento } from './../../../models/IEvento';
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-evento-lista',
@@ -65,7 +66,6 @@ export class EventoListaComponent implements OnInit {
       next: (_eventos: IEvento[]) => {
         this.eventos = _eventos;
         this.eventosFiltrados = this.eventos;
-        console.log(this.eventos);
       },
       error: (error: any) => {
         this.spinner.hide();
@@ -128,5 +128,10 @@ export class EventoListaComponent implements OnInit {
 
   detalheEvento(id: number) {
     this.route.navigate([`eventos/detalhe/${id}`]);
+  }
+  mostrarImagem(imagemURL: string): string {
+    return imagemURL !== ''
+      ? `${environment.apiURL}resources/images/${imagemURL}`
+      : 'assets/imagensAngular/semImagem.jpeg';
   }
 }

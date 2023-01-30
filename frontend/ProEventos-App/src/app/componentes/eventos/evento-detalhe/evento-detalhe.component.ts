@@ -1,3 +1,4 @@
+import { environment } from './../../../../environments/environment';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -47,6 +48,16 @@ export class EventoDetalheComponent implements OnInit {
       dateInputFormat: 'DD.MM.YYYY HH:mm',
       containerClass: 'theme-default',
       showWeekNumbers: false,
+      withTimePicker: true,
+    };
+  }
+
+  get bsConfigLote(): any {
+    return {
+      adaptivePosition: true,
+      dateInputFormat: 'DD.MM.YYYY',
+      containerClass: 'theme-default',
+      showWeekNumbers: false,
     };
   }
 
@@ -91,7 +102,10 @@ export class EventoDetalheComponent implements OnInit {
           this.evento = { ...evento };
           this.eventoData = this.evento.dataEvento;
           this.form.patchValue(this.evento);
-          // this.carregarLotes();
+          if (this.evento.imageUrl !== '') {
+            this.imagemUrl = environment.apiURL + 'resources/images/' + this.evento.imageUrl
+          }
+          this.carregarLotes();
         },
         error: (error: any) => {
           this.spinner.hide();
@@ -100,7 +114,7 @@ export class EventoDetalheComponent implements OnInit {
       });
     } else {
       this.spinner.hide();
-    } this.carregarLotes()
+    }
   }
 
   carregarLotes(): void {
@@ -186,12 +200,13 @@ export class EventoDetalheComponent implements OnInit {
   }
 
   salvarEvento(): void {
+    this.spinner.show();
     if (this.form.valid) {
-      this.spinner.show();
       this.evento =
         this.estadoSalvar === 'post'
           ? { ...this.form.value }
           : { id: this.evento.id, ...this.form.value };
+      console.log(this.estadoSalvar);
 
       this.eventoService[this.estadoSalvar](this.evento).subscribe(
         (eventoRetorno: IEvento) => {
@@ -208,7 +223,7 @@ export class EventoDetalheComponent implements OnInit {
     }
   }
 
-  public salvarLote(): void {
+  salvarLote(): void {
     if (this.form.controls['lotes'].valid) {
       this.spinner.show();
       this.loteService

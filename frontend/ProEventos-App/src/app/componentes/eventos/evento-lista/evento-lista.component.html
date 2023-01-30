@@ -52,7 +52,7 @@
           <img
             [collapse]="!showImg"
             [isAnimated]="true"
-            src="\assets\imagensAngular\{{ evento.imageUrl }}"
+            [src]="mostrarImagem(evento.imageUrl)"
             alt=""
             [style.width.px]="widthImg"
             [style.margin.px]="marginImg"

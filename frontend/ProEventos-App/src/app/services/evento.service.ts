@@ -1,3 +1,4 @@
+import { environment } from 'src/environments/environment';
 import { IEvento } from './../models/IEvento';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -5,7 +6,7 @@ import { Observable, take } from 'rxjs';
 
 @Injectable()
 export class EventoService {
-  baseUrl = 'https:localhost:5001/api/evento';
+  baseUrl = environment.apiURL +'api/eventos' ;
 
   constructor(private http: HttpClient) {}
 
