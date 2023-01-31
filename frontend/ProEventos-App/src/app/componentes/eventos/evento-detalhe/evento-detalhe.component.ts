@@ -163,7 +163,7 @@ export class EventoDetalheComponent implements OnInit {
       ],
       telefone: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
       email: ['', [Validators.required, Validators.email]],
-      imageUrl: ['', [Validators.required]],
+      imageUrl: [''],
       lotes: this.formBuilder.array([]),
     });
   }
