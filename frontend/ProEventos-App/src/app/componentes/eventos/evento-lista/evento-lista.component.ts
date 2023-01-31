@@ -64,7 +64,6 @@ export class EventoListaComponent implements OnInit {
   public carregarEventos(): void {
     this.eventoService.getEvento().subscribe({
       next: (eventos: IEvento[]) => {
-        console.log(eventos);
         this.eventos = eventos;
         this.eventosFiltrados = this.eventos;
       },
@@ -100,7 +99,6 @@ export class EventoListaComponent implements OnInit {
 
     this.eventoService.deleteEvento(this.eventoId).subscribe(
       (result: any) => {
-        console.log(result);
         this.toastr.success(
           `O evento ${this.eventoName} foi deletado!`,
           'Deletado!'
