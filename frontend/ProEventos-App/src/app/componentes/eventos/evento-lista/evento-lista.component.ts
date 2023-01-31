@@ -62,20 +62,18 @@ export class EventoListaComponent implements OnInit {
   }
 
   public carregarEventos(): void {
-    const observer = {
-      next: (_eventos: IEvento[]) => {
-        this.eventos = _eventos;
+    this.eventoService.getEvento().subscribe({
+      next: (eventos: IEvento[]) => {
+        console.log(eventos);
+        this.eventos = eventos;
         this.eventosFiltrados = this.eventos;
       },
       error: (error: any) => {
         this.spinner.hide();
-        this.toastr.error('Erro ao Carregar os Eventos', 'Erro!');
+        this.toastr.error('Erro ao carregar os eventos', 'Erro!');
       },
-      complete: () => {
-        this.spinner.hide();
-      },
-    };
-    this.eventoService.getEvento().subscribe(observer);
+      complete: () => this.spinner.hide(),
+    });
   }
 
   public showImgFunction(): void {

@@ -6,7 +6,7 @@ import { Observable, take } from 'rxjs';
 
 @Injectable()
 export class EventoService {
-  baseUrl = environment.apiURL +'api/eventos' ;
+  baseUrl = `${environment.apiURL}api/evento`;
 
   constructor(private http: HttpClient) {}
 
