@@ -162,7 +162,7 @@ namespace ProEventos.API.Controllers
             .Take(10)
             .ToArray()).Replace(' ', '-');
 
-            imageName = $"{imageName}{DateTime.UtcNow.ToString("yymmssfff{")}{Path.GetExtension(imageFile.FileName)}";
+            imageName = $"{imageName}{DateTime.UtcNow.ToString("yymmssfff")}{Path.GetExtension(imageFile.FileName)}";
 
             var imagePath = Path.Combine(_hostEnvironment.ContentRootPath, @"Resources/images", imageName);
 
@@ -171,7 +171,7 @@ namespace ProEventos.API.Controllers
                 await imageFile.CopyToAsync(fileStream);
             }
 
-            return "";
+            return imageName;
         }
     }
 }
