@@ -14,6 +14,7 @@
                 [ngClass]="cssValidator(f.tema)"
                 formControlName="tema"
                 placeholder="Insira o Tema"
+                [(ngModel)]="evento.tema"
               />
               <div *ngIf="f.tema.errors?.required" class="invalid-feedback">
                 Obrigatório.
@@ -35,6 +36,7 @@
                 [ngClass]="cssValidator(f.local)"
                 formControlName="local"
                 placeholder="Local"
+                [(ngModel)]="evento.local"
               />
               <div *ngIf="f.local.errors?.required" class="invalid-feedback">
                 Local é obrigatório
@@ -56,6 +58,7 @@
                 [ngClass]="cssValidator(f.dataEvento)"
                 formControlName="dataEvento"
                 placeholder="dd.MM.yyyy hh:mm"
+                [(ngModel)]="evento.dataEvento"
               />
               <div
                 *ngIf="f.dataEvento.errors?.required"
@@ -74,6 +77,7 @@
                 [ngClass]="cssValidator(f.qtdPessoas)"
                 formControlName="qtdPessoas"
                 placeholder=""
+                [(ngModel)]="evento.qtdPessoas"
               />
               <div
                 *ngIf="f.qtdPessoas.errors?.required"
@@ -96,6 +100,7 @@
                 formControlName="telefone"
                 placeholder="(000) 90000-0000"
                 [ngClass]="cssValidator(f.telefone)"
+                [(ngModel)]="evento.telefone"
               />
               <div *ngIf="f.telefone.errors?.required" class="invalid-feedback">
                 Telefone é obrigatório
@@ -112,6 +117,7 @@
                 formControlName="email"
                 placeholder="e-mail"
                 [ngClass]="cssValidator(f.email)"
+                [(ngModel)]="evento.email"
               />
               <div *ngIf="f.email.errors?.required" class="invalid-feedback">
                 E-mail é obrigatório.
@@ -120,19 +126,6 @@
                 Deve ser um email válido.
               </div>
             </div>
-            <!-- <div class="form-group col-md-4">
-              <label>Imagem</label>
-              <input
-                type="text"
-                class="form-control is-invalid"
-                formControlName="imageUrl"
-                placeholder="imagem"
-                [ngClass]="cssValidator(f.imageUrl)"
-              />
-              <div *ngIf="f.imageUrl.errors?.required" class="invalid-feedback">
-                Foto obrigatória.
-              </div>
-            </div> -->
           </div>
         </div>
         <div class="card-footer">
@@ -148,7 +141,6 @@
               [disabled]="!form.valid"
               (click)="salvarEvento()"
             >
-              <!-- <span class="spinner-border spinner-border-sm mr-1"></span> -->
               Salvar Evento
             </button>
           </div>
@@ -313,7 +305,7 @@
 
             <br />
 
-            <b>Data:</b> {{ eventoData | DateTimeFormat }}
+            <b>Data:</b> {{ evento.dataEvento | DateTimeFormat }}
           </p>
 
           <hr />
