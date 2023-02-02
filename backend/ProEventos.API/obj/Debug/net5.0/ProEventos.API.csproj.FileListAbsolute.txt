@@ -169,3 +169,8 @@ C:\Users\ariel\Desktop\Estudos\Angular_ProEventos_FullStack\backend\ProEventos.A
 C:\Users\ariel\Desktop\Estudos\Angular_ProEventos_FullStack\backend\ProEventos.API\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\ariel.neves\Desktop\Estudos\Angular_ProEventos_FullStack\backend\ProEventos.API\bin\Debug\net5.0\AutoMapper.dll
 C:\Users\ariel.neves\Desktop\Estudos\Angular_ProEventos_FullStack\backend\ProEventos.API\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\ariel.neves\Desktop\Estudos\Angular_ProEventos_FullStack\backend\ProEventos.API\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\ariel.neves\Desktop\Estudos\Angular_ProEventos_FullStack\backend\ProEventos.API\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\ariel.neves\Desktop\Estudos\Angular_ProEventos_FullStack\backend\ProEventos.API\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\ariel.neves\Desktop\Estudos\Angular_ProEventos_FullStack\backend\ProEventos.API\bin\Debug\net5.0\Microsoft.Extensions.Identity.Core.dll
+C:\Users\ariel.neves\Desktop\Estudos\Angular_ProEventos_FullStack\backend\ProEventos.API\bin\Debug\net5.0\Microsoft.Extensions.Identity.Stores.dll
