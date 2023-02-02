@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using ProEventos.Domain.Identity;
 using ProEventos.Persistence.Contratos;
 using ProEventos.Persistente;
@@ -14,21 +15,22 @@ namespace ProEventos.Persistence.Persistence
         public UserPersist(ProEventosContext context) : base(context)
         {
             _context = context;
-
         }
 
-        public Task<IEnumerable<User>> GetUsersAsync()
+        public async Task<IEnumerable<User>> GetUsersAsync()
         {
-            throw new NotImplementedException();
+            return await _context.Users.ToListAsync();
         }
-        public Task<User> GetUserByIdAsync(int id)
+        public async Task<User> GetUserByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return await _context.Users.FindAsync(id);
         }
 
-        public Task<User> GetUserByUserName(string userName)
+        public async Task<User> GetUserByUserName(string username)
         {
-            throw new NotImplementedException();
+            return await _context.Users.SingleOrDefaultAsync(
+                                        user => user.UserName == username.ToLower()
+            );
         }
     }
 }
