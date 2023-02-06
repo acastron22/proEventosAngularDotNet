@@ -9,11 +9,13 @@ namespace ProEventos.Application.Contratos
 {
     public interface IEventoService
     {
-        Task<EventoDto> AddEventos(EventoDto model);
-        Task<EventoDto> UpdateEvento(int eventoId, EventoDto model);
-        Task<bool> DeleteEvento(int eventoId);
-        Task<EventoDto[]> GetAllEventosAsync(bool includePalestrantes = false); // busca todos os eventos
-        Task<EventoDto[]> GetAllEventosByTemaAsync(string tema, bool includePalestrantes = false); // buscar eventos por tema
-        Task<EventoDto> GetEventoByIdAsync(int eventoId, bool includePalestrantes = false); // busca eventos por ID
+        Task<EventoDto> AddEventos(int userId, EventoDto model);
+        Task<EventoDto> UpdateEvento(int userId, int eventoId, EventoDto model);
+        Task<bool> DeleteEvento(int userId, int eventoId);
+        Task<EventoDto[]> GetAllEventosAsync(int userId, bool includePalestrantes = false); // busca todos os eventos
+        Task<EventoDto[]> GetAllEventosByTemaAsync(int userId, string tema, bool includePalestrantes = false); // buscar eventos por tema
+        Task<EventoDto> GetEventoByIdAsync(int userId, int eventoId, bool includePalestrantes = false); // busca eventos por ID
+
+
     }
 }

@@ -7,7 +7,7 @@ using ProEventos.Domain.Identity;
 using ProEventos.Persistence.Contratos;
 using ProEventos.Persistente;
 
-namespace ProEventos.Persistence.Persistence
+namespace ProEventos.Persistence
 {
     public class UserPersist : GeralPersist, IUserPersist
     {
