@@ -17,10 +17,14 @@ import { RegistrarComponent } from './componentes/user/registrar/registrar.compo
 // Services da aplicação
 import { EventoService } from './services/evento.service';
 import { LoteService } from './services/lote.service';
+import { AccountService } from './services/account.service';
+
+// Interceptor
+import { JwtInterceptor } from './interceptors/jwt.interceptor';
 
 // Angular Components
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -40,6 +44,7 @@ import { ptBrLocale } from 'ngx-bootstrap/locale';
 import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { NgxCurrencyModule } from 'ngx-currency';
+import { HomeComponent } from './componentes/home/home.component';
 
 defineLocale('pt-br', ptBrLocale);
 
@@ -59,6 +64,7 @@ defineLocale('pt-br', ptBrLocale);
     UserComponent,
     LoginComponent,
     RegistrarComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -81,8 +87,13 @@ defineLocale('pt-br', ptBrLocale);
     BsDatepickerModule.forRoot(),
     NgxCurrencyModule,
   ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [EventoService, LoteService],
+  providers: [
+    EventoService,
+    LoteService,
+    AccountService,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {}

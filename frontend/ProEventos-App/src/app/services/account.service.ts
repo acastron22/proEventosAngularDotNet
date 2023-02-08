@@ -4,9 +4,7 @@ import { map, Observable, ReplaySubject, take } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { IUser } from '../models/identity/IUser';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class AccountService {
   baseUrl = environment.apiURL + 'api/account/';
   private currentUserSource = new ReplaySubject<IUser>(1);
