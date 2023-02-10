@@ -1,6 +1,6 @@
 <app-titulo [titulo]="'Perfil'"></app-titulo>
 <div class="card rounded shadow-sm">
-  <form [formGroup]="form">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="row p-3">
       <div class="col-lg-3 pt-1">
         <div class="card mb-3">
@@ -19,11 +19,9 @@
           <div class="card-body">
             <div class="h4 text-center mb-3">@UserName</div>
             <div class="h7 text-bold pb-1">
-              <b>Nome:</b> {{ fromsfields[1] }}
+              <b>Nome:</b>
             </div>
-            <div class="h7">
-              {{ fromsfields[6] }}
-            </div>
+            <div class="h7"></div>
           </div>
           <ul class="list-group list-group-flush">
             <li class="list-group-item">
@@ -57,14 +55,14 @@
               }"
               formControlName="titulo"
             >
-              <option value=""></option>
-              <option value="Tecnólogo">Tecnólogo(a)</option>
+              <option value="NaoInformado"></option>
+              <option value="Tecnologo">Tecnólogo(a)</option>
               <option value="Bacharel">Bacharel</option>
               <option value="Especialista">Especialista</option>
-              <option value="Pós Graduado">Pós Graduado(a)</option>
-              <option value="Mestre">Mestre</option>
-              <option value="Doutor">Doutor(a)</option>
-              <option value="Pós Doc">Pós Doc</option>
+              <option value="PosGraduado">Pós Graduado(a)</option>
+              <option value="Mestrado">Mestre</option>
+              <option value="Doutorado">Doutor(a)</option>
+              <option value="PosDoutorado">Pós Doc</option>
             </select>
             <div
               *ngIf="registro.titulo.errors?.required"
@@ -92,7 +90,7 @@
               Nome é obrigatório.
             </div>
             <div
-              *ngIf="registro.ultimoNome.errors?.maxlength"
+              *ngIf="registro.primeiroNome.errors?.maxlength"
               class="invalid-feedback"
             >
               Máximo de 25 caracteres.
@@ -145,12 +143,12 @@
               class="form-control"
               [ngClass]="{
                 'is-invalid':
-                  registro.telefone?.errors && registro.telefone?.touched
+                  registro.phoneNumber?.errors && registro.phoneNumber?.touched
               }"
-              formControlName="telefone"
+              formControlName="phoneNumber"
             />
             <div
-              *ngIf="registro.telefone.errors?.pattern"
+              *ngIf="registro.phoneNumber.errors?.pattern"
               class="invalid-feedback"
             >
               Somente números é permitido.
@@ -166,7 +164,7 @@
               }"
               formControlName="funcao"
             >
-              <option value=""></option>
+              <option value="NaoInformado"></option>
               <option value="Participante">Participante</option>
               <option value="Palestrante">Palestrante</option>
             </select>
@@ -201,9 +199,10 @@
               type="password"
               class="form-control"
               [ngClass]="{
-                'is-invalid': registro.senha?.errors && registro.senha?.touched
+                'is-invalid':
+                  registro.password?.errors && registro.password?.touched
               }"
-              formControlName="senha"
+              formControlName="password"
             />
           </div>
           <div class="form-group col-sm">
@@ -213,13 +212,13 @@
               class="form-control"
               [ngClass]="{
                 'is-invalid':
-                  registro.confirmaSenha?.errors &&
-                  registro.confirmaSenha?.touched
+                  registro.confirmaPassword?.errors &&
+                  registro.confirmaPassword?.touched
               }"
-              formControlName="confirmaSenha"
+              formControlName="confirmaPassword"
             />
             <div
-              *ngIf="registro.confirmaSenha.errors?.mustMatch"
+              *ngIf="registro.confirmaPassword.errors?.mustMatch"
               class="invalid-feedback"
             >
               Senhas não são iguais.
@@ -233,7 +232,7 @@
         <button class="btn btn-outline-secondary mr-auto border">
           Cancelar Alteração
         </button>
-        <button class="btn btn-success" [disabled]="!form.valid">
+        <button class="btn btn-success" type="submit">
           <!-- <span class="spinner-border spinner-border-sm mr-1"></span> -->
           Salvar Alteração
         </button>
