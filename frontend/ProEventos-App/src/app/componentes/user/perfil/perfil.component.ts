@@ -66,7 +66,7 @@ export class PerfilComponent implements OnInit {
     this.form = this.formBuilder.group(
       {
         userName: [''],
-        titulo: ['', [Validators.required]],
+        titulo: ['NaoInformado', [Validators.required]],
         primeiroNome: ['', [Validators.required, Validators.maxLength(25)]],
         ultimoNome: ['', [Validators.required, Validators.maxLength(30)]],
         email: ['', [Validators.required, Validators.email]],
@@ -75,7 +75,7 @@ export class PerfilComponent implements OnInit {
           [Validators.required, Validators.pattern('^[0-9]*$')],
         ],
         descricao: ['', [Validators.required]],
-        funcao: [''],
+        funcao: ['NaoInformado'],
         password: ['', [Validators.minLength(6)]],
         confirmaPassword: ['', [Validators.minLength(6)]],
       },
@@ -94,7 +94,10 @@ export class PerfilComponent implements OnInit {
     this.accountService
       .updateUser(this.userUpdate)
       .subscribe(
-        () => console.log(this.userUpdate),
+        () => {
+          console.log(this.userUpdate);
+          this.tostr.success('Usuário atualizado', 'Sucesso');
+        },
         (error) => {
           console.log(this.userUpdate);
           this.tostr.error(error.error);

@@ -17,22 +17,27 @@
             </a>
           </div>
           <div class="card-body">
-            <div class="h4 text-center mb-3">@UserName</div>
-            <div class="h7 text-bold pb-1">
-              <b>Nome:</b>
+            <div class="h4 text-center mb-3">
+              @{{ registro.userName.value }}
             </div>
-            <div class="h7"></div>
+            <div class="h7 text-bold pb-1">
+              <b>Nome: </b
+              >{{
+                registro.primeiroNome.value + " " + registro.ultimoNome.value
+              }}
+            </div>
+            <div class="h6 mt-3">{{ registro.descricao.value }}</div>
           </div>
           <ul class="list-group list-group-flush">
             <li class="list-group-item">
               <div class="row">
                 <div class="col-6 text-center border-right">
                   <div class="h5">1342</div>
-                  <div class="h6 text-muted">Eventos Ministrados</div>
+                  <div class="h6 text-muted">Meus Eventos Criados</div>
                 </div>
                 <div class="col-6 text-center">
                   <div class="h5">1342</div>
-                  <div class="h6 text-muted">Eventos Participados</div>
+                  <div class="h6 text-muted">Eventos Como Participados</div>
                 </div>
               </div>
             </li>
@@ -169,7 +174,7 @@
               <option value="Palestrante">Palestrante</option>
             </select>
           </div>
-          <form-group class="col-12">
+          <div class="form-group col-12">
             <label>Descrição</label>
             <input
               type="text"
@@ -186,7 +191,7 @@
             >
               É preciso escrever uma descrição.
             </div>
-          </form-group>
+          </div>
         </div>
         <div>
           <h3 class="pt-3 border-bottom">Mudar Senha</h3>
