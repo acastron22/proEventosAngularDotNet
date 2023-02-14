@@ -2,15 +2,12 @@
   <div class="d-flex">
     <div class="flex-fill pr-3">
       <div class="input-group mb-2">
-        <div class="input-group-prepend mr-2">
-          <div class="input-group-text d-none d-sm-block">Filtro:</div>
-        </div>
         <input
-          [(ngModel)]="filtroLista"
+          (input)="filtrarEventos($event.target)"
           type="text"
-          class="form-group-text"
+          class="form-control"
           placeholder="Filtrar por tema e local"
-        />
+        >
       </div>
     </div>
     <div>
@@ -44,7 +41,7 @@
     </thead>
     <tbody *ngIf="eventos && eventos.length">
       <tr
-        *ngFor="let evento of eventosFiltrados; let i = index"
+        *ngFor="let evento of eventos; let i = index"
         (click)="detalheEvento(evento.id)"
         style="cursor: pointer"
       >
@@ -87,6 +84,21 @@
       </tr>
     </tfoot>
   </table>
+  <div class="d-flex justify-content-center">
+    <pagination
+      [boundaryLinks]="true"
+      [totalItems]="pagination.totalItem"
+      [itemsPerPage]="pagination.itemsPerPage"
+      [(ngModel)]="pagination.currentPage"
+      (pageChanged)="pageChanged($event)"
+      pageBtnClass="btn"
+      previousText="&lsaquo;"
+      nextText="&rsaquo;"
+      firstText="&laquo;"
+      lastText="&raquo;"
+    >
+    </pagination>
+  </div>
 </div>
 <ng-template #template>
   <div class="modal-body text-center">

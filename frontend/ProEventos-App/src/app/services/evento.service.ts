@@ -1,8 +1,10 @@
+import { Pagination } from './../models/pagination';
 import { environment } from 'src/environments/environment';
 import { IEvento } from './../models/IEvento';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, take } from 'rxjs';
+import { Observable, map, take } from 'rxjs';
+import { PaginatedResult } from '../models/pagination';
 
 @Injectable()
 export class EventoService {
@@ -10,12 +12,40 @@ export class EventoService {
 
   constructor(private http: HttpClient) {}
 
-  getEvento(): Observable<IEvento[]> {
-    return this.http.get<IEvento[]>(this.baseUrl).pipe(take(1));
+  getEvento(
+    page?: number,
+    itemsPerPage?: number,
+    termo?: string
+  ): Observable<PaginatedResult<IEvento[]>> {
+    const paginatedResult: PaginatedResult<IEvento[]> = new PaginatedResult<
+      IEvento[]
+    >();
+
+    let params = new HttpParams();
+
+    if (page != null && itemsPerPage != null) {
+      params = params.append('pageNumber', page.toString());
+      params = params.append('pageNumber', itemsPerPage.toString());
+    }
+
+    if (termo != null && termo != '') params = params.append('termos', termo);
+
+    return this.http
+      .get<IEvento[]>(this.baseUrl, { observe: 'response', params })
+      .pipe(
+        take(1),
+        map((response) => {
+          paginatedResult.result = response.body!;
+          if (response.headers.has('Pagination')) {
+            paginatedResult.pagination = JSON.parse(
+              response.headers.get('Pagination')!
+            );
+          }
+          return paginatedResult;
+        })
+      );
   }
-  getEventosByTema(tema: string): Observable<IEvento> {
-    return this.http.get<IEvento>(`${this.baseUrl}/${tema}/tema`).pipe(take(1));
-  }
+
   getEventoById(id: number): Observable<IEvento> {
     return this.http.get<IEvento>(`${this.baseUrl}/${id}`).pipe(take(1));
   }

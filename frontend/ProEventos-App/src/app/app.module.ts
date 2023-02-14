@@ -18,6 +18,7 @@ import { RegistrarComponent } from './componentes/user/registrar/registrar.compo
 import { EventoService } from './services/evento.service';
 import { LoteService } from './services/lote.service';
 import { AccountService } from './services/account.service';
+import { DateTimeFormatPipe } from './helpers/date-time-format.pipe';
 
 // Interceptor
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
@@ -31,11 +32,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // ngx-bootstrap
 import { CollapseModule } from 'ngx-bootstrap/collapse';
-import { DateTimeFormatPipe } from './helpers/date-time-format.pipe';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ModalModule } from 'ngx-bootstrap/modal';
-
+import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { defineLocale } from 'ngx-bootstrap/chronos';
 import { ptBrLocale } from 'ngx-bootstrap/locale';
@@ -46,7 +46,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { NgxCurrencyModule } from 'ngx-currency';
 import { HomeComponent } from './componentes/home/home.component';
 
-defineLocale('pt-br', ptBrLocale);
+defineLocale('pt-br', ptBrLocale); //ngx bootstrap
 
 @NgModule({
   declarations: [
@@ -71,11 +71,13 @@ defineLocale('pt-br', ptBrLocale);
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    CollapseModule.forRoot(),
     FormsModule,
-    TooltipModule,
-    BsDropdownModule.forRoot(),
-    ModalModule.forRoot(),
+    TooltipModule, //ngx bootstrap
+    CollapseModule.forRoot(), //ngx bootstrap
+    BsDatepickerModule.forRoot(), //ngx bootstrap
+    PaginationModule.forRoot(), //ngx bootstrap
+    BsDropdownModule.forRoot(), //ngx bootstrap
+    ModalModule.forRoot(), //ngx bootstrap
     ToastrModule.forRoot({
       timeOut: 5000,
       positionClass: 'toast-bottom-right',
@@ -84,7 +86,6 @@ defineLocale('pt-br', ptBrLocale);
     }),
     NgxSpinnerModule,
     ReactiveFormsModule,
-    BsDatepickerModule.forRoot(),
     NgxCurrencyModule,
   ],
   providers: [
