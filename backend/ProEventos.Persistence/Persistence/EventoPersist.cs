@@ -32,7 +32,9 @@ namespace ProEventos.Persistence
             }
 
             query = query.AsNoTracking()
-                         .Where(e => e.Tema.ToLower().Contains(pageParams.Termos.ToLower()) &&
+                         .Where(e => (e.Tema.ToLower().Contains(pageParams.Termos.ToLower()) ||
+                                      e.Local.ToLower().Contains(pageParams.Termos.ToLower())) &&
+
                                 e.UserId == userId)
                          .OrderBy(e => e.Id);
 
