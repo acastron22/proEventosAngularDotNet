@@ -13,5 +13,7 @@ namespace ProEventos.Application.Dtos
         public string PrimeiroNome { get; set; }
         public string UltimoNome { get; set; }
         
+
+
     }
 }

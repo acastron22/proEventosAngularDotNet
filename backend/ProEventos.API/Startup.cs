@@ -21,6 +21,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using ProEventos.API.helpers;
 using ProEventos.Application;
 using ProEventos.Application.Contratos;
 using ProEventos.Domain.Identity;
@@ -89,6 +90,7 @@ namespace ProEventos.API
             services.AddScoped<IAccountService, AccountService>();
             services.AddScoped<IPalestranteService, PalestranteService>();
             services.AddScoped<IRedeSocialService, RedeSocialService>();
+            services.AddScoped<IUtil, Util>();
 
 
             services.AddScoped<IGeralPersist, GeralPersist>();
