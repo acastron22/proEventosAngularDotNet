@@ -15,8 +15,8 @@ import { Subject, debounceTime } from 'rxjs';
   styleUrls: ['./evento-lista.component.scss'],
 })
 export class EventoListaComponent implements OnInit {
-  public eventos: IEvento[] = [];
   public eventoName: string = '';
+  public eventos: IEvento[] = [];
   public eventoId: number = 0;
   public pagination = {} as Pagination;
 
@@ -77,7 +77,7 @@ export class EventoListaComponent implements OnInit {
     this.carregarEventos();
   }
 
-  public carregarEventos(): void {
+  carregarEventos(): void {
     this.spinner.show();
     this.eventoService
       .getEvento(this.pagination.currentPage, this.pagination.itemsPerPage)

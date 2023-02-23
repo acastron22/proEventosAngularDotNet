@@ -47,6 +47,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { NgxCurrencyModule } from 'ngx-currency';
 import { HomeComponent } from './componentes/home/home.component';
+import { PalestranteListaComponent } from './componentes/palestrantes/palestrante-lista/palestrante-lista.component';
 
 defineLocale('pt-br', ptBrLocale); //ngx bootstrap
 
@@ -68,6 +69,7 @@ defineLocale('pt-br', ptBrLocale); //ngx bootstrap
     LoginComponent,
     RegistrarComponent,
     HomeComponent,
+    PalestranteListaComponent,
   ],
   imports: [
     BrowserModule,
