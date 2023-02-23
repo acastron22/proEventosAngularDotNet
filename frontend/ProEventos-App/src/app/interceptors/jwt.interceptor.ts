@@ -7,11 +7,12 @@ import {
   HttpEvent,
   HttpInterceptor,
 } from '@angular/common/http';
-import { Observable, take } from 'rxjs';
+import { Observable, catchError, take, throwError } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {
-  constructor(private accountService: AccountService) {}
+  constructor(private accountService: AccountService, private router:Router) { }
 
   intercept(
     request: HttpRequest<unknown>,
@@ -30,6 +31,15 @@ export class JwtInterceptor implements HttpInterceptor {
       }
     });
 
-    return next.handle(request);
+    return next.handle(request).pipe(
+      catchError((error) => {
+        if (error) {
+          localStorage.removeItem('user');
+          alert('Conexão Expirada. Por favor, faça o login novamente');
+          this.router.navigate(['/user/login']);
+        }
+        return throwError(error);
+      })
+    );
   }
 }

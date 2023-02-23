@@ -9,4 +9,5 @@ export interface IUserUpdate {
   descricao: string;
   password: string;
   token: string;
+  imagemUrl: string;
 }

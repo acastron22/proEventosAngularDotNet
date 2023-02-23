@@ -1,0 +1,188 @@
+<form [formGroup]="form" (submit)="onSubmit()">
+  <div class="form-row">
+    <div class="form-group col-12 my-1">
+      <h3 class="border-bottom">Detalhe Perfil</h3>
+    </div>
+    <div class="form-group col">
+      <label>Título</label>
+      <select
+        class="form-control"
+        [ngClass]="{
+          'is-invalid': registro.titulo?.errors && registro.titulo?.touched
+        }"
+        formControlName="titulo"
+      >
+        <option value="NaoInformado"></option>
+        <option value="Tecnologo">Tecnólogo(a)</option>
+        <option value="Bacharel">Bacharel</option>
+        <option value="Especialista">Especialista</option>
+        <option value="PosGraduado">Pós Graduado(a)</option>
+        <option value="Mestrado">Mestre</option>
+        <option value="Doutorado">Doutor(a)</option>
+        <option value="PosDoutorado">Pós Doc</option>
+      </select>
+      <div *ngIf="registro.titulo.errors?.required" class="invalid-feedback">
+        Título é obrigatório.
+      </div>
+    </div>
+    <div class="form-group col-sm-5">
+      <label>Primeiro Nome</label>
+      <input
+        type="text"
+        class="form-control"
+        [ngClass]="{
+          'is-invalid':
+            registro.primeiroNome?.errors && registro.primeiroNome?.touched
+        }"
+        formControlName="primeiroNome"
+      />
+      <div
+        *ngIf="registro.primeiroNome.errors?.required"
+        class="invalid-feedback"
+      >
+        Nome é obrigatório.
+      </div>
+      <div
+        *ngIf="registro.primeiroNome.errors?.maxlength"
+        class="invalid-feedback"
+      >
+        Máximo de 25 caracteres.
+      </div>
+    </div>
+    <div class="form-group col-sm-5">
+      <label>Último nome</label>
+      <input
+        type="text"
+        class="form-control"
+        [ngClass]="{
+          'is-invalid':
+            registro.ultimoNome?.errors && registro.ultimoNome?.touched
+        }"
+        formControlName="ultimoNome"
+      />
+      <div
+        *ngIf="registro.ultimoNome.errors?.required"
+        class="invalid-feedback"
+      >
+        Último nome é obrigatório.
+      </div>
+      <div
+        *ngIf="registro.ultimoNome.errors?.maxlength"
+        class="invalid-feedback"
+      >
+        Máximo de 30 caracteres.
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-sm-5">
+      <label>E-mail</label>
+      <input
+        type="text"
+        class="form-control"
+        [ngClass]="{
+          'is-invalid': registro.email?.errors && registro.email?.touched
+        }"
+        formControlName="email"
+      />
+      <div *ngIf="registro.email.errors?.email" class="invalid-feedback">
+        Por favor, digite um e-mail válido.
+      </div>
+    </div>
+    <div class="form-group col-sm-4">
+      <label>Telefone</label>
+      <input
+        type="text"
+        class="form-control"
+        [ngClass]="{
+          'is-invalid':
+            registro.phoneNumber?.errors && registro.phoneNumber?.touched
+        }"
+        formControlName="phoneNumber"
+      />
+      <div
+        *ngIf="registro.phoneNumber.errors?.pattern"
+        class="invalid-feedback"
+      >
+        Somente números é permitido.
+      </div>
+    </div>
+    <div class="form-group col-sm">
+      <label>Função </label>
+      <select
+        class="form-control"
+        [ngClass]="{
+          'is-invalid': registro.funcao?.errors && registro.funcao?.touched
+        }"
+        formControlName="funcao"
+      >
+        <option value="NaoInformado"></option>
+        <option value="Participante">Participante</option>
+        <option value="Palestrante">Palestrante</option>
+      </select>
+    </div>
+    <div class="form-group col-12">
+      <label>Descrição</label>
+      <input
+        type="text"
+        class="form-control"
+        [ngClass]="{
+          'is-invalid':
+            registro.descricao?.errors && registro.descricao?.touched
+        }"
+        formControlName="descricao"
+      />
+      <div *ngIf="registro.descricao.errors?.required" class="invalid-feedback">
+        É preciso escrever uma descrição.
+      </div>
+    </div>
+  </div>
+  <div>
+    <h3 class="pt-3 border-bottom">Mudar Senha</h3>
+    <p>Caso mude de senha, preencha os campos abaixo:</p>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-sm">
+      <label>Senha</label>
+      <input
+        type="password"
+        class="form-control"
+        [ngClass]="{
+          'is-invalid': registro.password?.errors && registro.password?.touched
+        }"
+        formControlName="password"
+      />
+    </div>
+    <div class="form-group col-sm">
+      <label>Confirmar Senha</label>
+      <input
+        type="password"
+        class="form-control"
+        [ngClass]="{
+          'is-invalid':
+            registro.confirmaPassword?.errors &&
+            registro.confirmaPassword?.touched
+        }"
+        formControlName="confirmaPassword"
+      />
+      <div
+        *ngIf="registro.confirmaPassword.errors?.mustMatch"
+        class="invalid-feedback"
+      >
+        Senhas não são iguais.
+      </div>
+    </div>
+  </div>
+
+  <div class="card-footer">
+    <div class="d-flex">
+      <button class="btn btn-outline-secondary mr-auto border">
+        Cancelar Alteração
+      </button>
+      <button class="btn btn-success" type="submit">
+        <!-- <span class="spinner-border spinner-border-sm mr-1"></span> -->
+        Salvar Alteração
+      </button>
+    </div>
+  </div>
+</form>

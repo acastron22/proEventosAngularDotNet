@@ -8,6 +8,7 @@ import { TituloComponent } from './shared/titulo/titulo.component';
 import { ContatosComponent } from './componentes/contatos/contatos.component';
 import { DashboardComponent } from './componentes/dashboard/dashboard.component';
 import { PerfilComponent } from './componentes/user/perfil/perfil.component';
+import { PerfilDetalheComponent } from './componentes/user/perfil/perfil-detalhe/perfil-detalhe.component';
 import { EventoDetalheComponent } from './componentes/eventos/evento-detalhe/evento-detalhe.component';
 import { EventoListaComponent } from './componentes/eventos/evento-lista/evento-lista.component';
 import { UserComponent } from './componentes/user/user.component';
@@ -32,6 +33,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // ngx-bootstrap
 import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { TabsModule } from 'ngx-bootstrap/tabs';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ModalModule } from 'ngx-bootstrap/modal';
@@ -59,6 +61,7 @@ defineLocale('pt-br', ptBrLocale); //ngx bootstrap
     ContatosComponent,
     DashboardComponent,
     PerfilComponent,
+    PerfilDetalheComponent,
     EventoDetalheComponent,
     EventoListaComponent,
     UserComponent,
@@ -74,6 +77,7 @@ defineLocale('pt-br', ptBrLocale); //ngx bootstrap
     FormsModule,
     TooltipModule, //ngx bootstrap
     CollapseModule.forRoot(), //ngx bootstrap
+    TabsModule.forRoot(), //ngx bootstrap
     BsDatepickerModule.forRoot(), //ngx bootstrap
     PaginationModule.forRoot(), //ngx bootstrap
     BsDropdownModule.forRoot(), //ngx bootstrap

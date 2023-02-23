@@ -1,247 +1,73 @@
 <app-titulo [titulo]="'Perfil'"></app-titulo>
 <div class="card rounded shadow-sm">
-  <form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <div class="row p-3">
-      <div class="col-lg-3 pt-1">
-        <div class="card mb-3">
-          <div class="card-header"></div>
-          <div class="d-flex align-self-center pt-3">
-            <a>
-              <img
-                src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRbezqZpEuwGSvitKy3wrwnth5kysKdRqBW54cAszm_wiutku3R"
-                name="aboutme"
-                width="120"
-                height="120"
-                class="rounded-circle"
-              />
-            </a>
+  <div class="row p-3">
+    <div class="col-lg-3 pt-1">
+      <div class="card mb-3">
+        <div class="card-header">
+          <input
+            type="file"
+            #file
+            (change)="onFileChange($event)"
+            style="display: none"
+          />
+        </div>
+        <div class="d-flex align-self-center pt-3">
+          <img
+            [src]="imagemUrl"
+            name="aboutme"
+            width="120"
+            height="120"
+            class="rounded-circle"
+            (click)="file.click()"
+            style="cursor: pointer"
+          />
+        </div>
+        <div class="card-body">
+          <div class="h4 text-center mb-3">@{{ usuario.userName }}</div>
+          <div class="h7 text-bold pb-1">
+            <b>Nome: </b>{{ usuario.primeiroNome + " " + usuario.ultimoNome }}
           </div>
-          <div class="card-body">
-            <div class="h4 text-center mb-3">
-              @{{ registro.userName.value }}
-            </div>
-            <div class="h7 text-bold pb-1">
-              <b>Nome: </b
-              >{{
-                registro.primeiroNome.value + " " + registro.ultimoNome.value
-              }}
-            </div>
-            <div class="h6 mt-3">{{ registro.descricao.value }}</div>
-          </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">
-              <div class="row">
-                <div class="col-6 text-center border-right">
-                  <div class="h5">1342</div>
-                  <div class="h6 text-muted">Meus Eventos Criados</div>
-                </div>
-                <div class="col-6 text-center">
-                  <div class="h5">1342</div>
-                  <div class="h6 text-muted">Eventos Como Participados</div>
-                </div>
+          <div class="h6 mt-3">{{ usuario.descricao }}</div>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-6 text-center border-right">
+                <div class="h5">1342</div>
+                <div class="h6 text-muted">Meus Eventos Criados</div>
               </div>
-            </li>
-          </ul>
-          <div class="card-footer"></div>
-        </div>
-      </div>
-      <div class="col-lg-9">
-        <div class="form-row">
-          <div class="form-group col-12">
-            <h3 class="border-bottom">Detalhe Perfil</h3>
-          </div>
-          <div class="form-group col">
-            <label>Título</label>
-            <select
-              class="form-control"
-              [ngClass]="{
-                'is-invalid':
-                  registro.titulo?.errors && registro.titulo?.touched
-              }"
-              formControlName="titulo"
-            >
-              <option value="NaoInformado"></option>
-              <option value="Tecnologo">Tecnólogo(a)</option>
-              <option value="Bacharel">Bacharel</option>
-              <option value="Especialista">Especialista</option>
-              <option value="PosGraduado">Pós Graduado(a)</option>
-              <option value="Mestrado">Mestre</option>
-              <option value="Doutorado">Doutor(a)</option>
-              <option value="PosDoutorado">Pós Doc</option>
-            </select>
-            <div
-              *ngIf="registro.titulo.errors?.required"
-              class="invalid-feedback"
-            >
-              Título é obrigatório.
+              <div class="col-6 text-center">
+                <div class="h5">1342</div>
+                <div class="h6 text-muted">Eventos Como Participados</div>
+              </div>
             </div>
-          </div>
-          <div class="form-group col-sm-5">
-            <label>Primeiro Nome</label>
-            <input
-              type="text"
-              class="form-control"
-              [ngClass]="{
-                'is-invalid':
-                  registro.primeiroNome?.errors &&
-                  registro.primeiroNome?.touched
-              }"
-              formControlName="primeiroNome"
-            />
-            <div
-              *ngIf="registro.primeiroNome.errors?.required"
-              class="invalid-feedback"
-            >
-              Nome é obrigatório.
-            </div>
-            <div
-              *ngIf="registro.primeiroNome.errors?.maxlength"
-              class="invalid-feedback"
-            >
-              Máximo de 25 caracteres.
-            </div>
-          </div>
-          <div class="form-group col-sm-5">
-            <label>Último nome</label>
-            <input
-              type="text"
-              class="form-control"
-              [ngClass]="{
-                'is-invalid':
-                  registro.ultimoNome?.errors && registro.ultimoNome?.touched
-              }"
-              formControlName="ultimoNome"
-            />
-            <div
-              *ngIf="registro.ultimoNome.errors?.required"
-              class="invalid-feedback"
-            >
-              Último nome é obrigatório.
-            </div>
-            <div
-              *ngIf="registro.ultimoNome.errors?.maxlength"
-              class="invalid-feedback"
-            >
-              Máximo de 30 caracteres.
-            </div>
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group col-sm-5">
-            <label>E-mail</label>
-            <input
-              type="text"
-              class="form-control"
-              [ngClass]="{
-                'is-invalid': registro.email?.errors && registro.email?.touched
-              }"
-              formControlName="email"
-            />
-            <div *ngIf="registro.email.errors?.email" class="invalid-feedback">
-              Por favor, digite um e-mail válido.
-            </div>
-          </div>
-          <div class="form-group col-sm-4">
-            <label>Telefone</label>
-            <input
-              type="text"
-              class="form-control"
-              [ngClass]="{
-                'is-invalid':
-                  registro.phoneNumber?.errors && registro.phoneNumber?.touched
-              }"
-              formControlName="phoneNumber"
-            />
-            <div
-              *ngIf="registro.phoneNumber.errors?.pattern"
-              class="invalid-feedback"
-            >
-              Somente números é permitido.
-            </div>
-          </div>
-          <div class="form-group col-sm">
-            <label>Função</label>
-            <select
-              class="form-control"
-              [ngClass]="{
-                'is-invalid':
-                  registro.funcao?.errors && registro.funcao?.touched
-              }"
-              formControlName="funcao"
-            >
-              <option value="NaoInformado"></option>
-              <option value="Participante">Participante</option>
-              <option value="Palestrante">Palestrante</option>
-            </select>
-          </div>
-          <div class="form-group col-12">
-            <label>Descrição</label>
-            <input
-              type="text"
-              class="form-control"
-              [ngClass]="{
-                'is-invalid':
-                  registro.descricao?.errors && registro.descricao?.touched
-              }"
-              formControlName="descricao"
-            />
-            <div
-              *ngIf="registro.descricao.errors?.required"
-              class="invalid-feedback"
-            >
-              É preciso escrever uma descrição.
-            </div>
-          </div>
-        </div>
-        <div>
-          <h3 class="pt-3 border-bottom">Mudar Senha</h3>
-          <p>Caso mude de senha, preencha os campos abaixo:</p>
-        </div>
-        <div class="form-row">
-          <div class="form-group col-sm">
-            <label>Senha</label>
-            <input
-              type="password"
-              class="form-control"
-              [ngClass]="{
-                'is-invalid':
-                  registro.password?.errors && registro.password?.touched
-              }"
-              formControlName="password"
-            />
-          </div>
-          <div class="form-group col-sm">
-            <label>Confirmar Senha</label>
-            <input
-              type="password"
-              class="form-control"
-              [ngClass]="{
-                'is-invalid':
-                  registro.confirmaPassword?.errors &&
-                  registro.confirmaPassword?.touched
-              }"
-              formControlName="confirmaPassword"
-            />
-            <div
-              *ngIf="registro.confirmaPassword.errors?.mustMatch"
-              class="invalid-feedback"
-            >
-              Senhas não são iguais.
-            </div>
-          </div>
-        </div>
+          </li>
+        </ul>
+        <div class="card-footer"></div>
       </div>
     </div>
-    <div class="card-footer">
-      <div class="d-flex">
-        <button class="btn btn-outline-secondary mr-auto border">
-          Cancelar Alteração
-        </button>
-        <button class="btn btn-success" type="submit">
-          <!-- <span class="spinner-border spinner-border-sm mr-1"></span> -->
-          Salvar Alteração
-        </button>
-      </div>
+    <div class="col-lg-9">
+      <tabset>
+        <tab class="border border-top-0 p-3">
+          <ng-template tabHeading>
+            <i class="fa fa-address-card mr-2"></i><span>Perfil</span>
+          </ng-template>
+          <app-perfil-detalhe (changeFormValue)="setFormValue($event)">
+          </app-perfil-detalhe>
+        </tab>
+        <tab *ngIf="ehPalestrante" class="border border-top-0 p-3">
+          <ng-template tabHeading>
+            <i class="fa fa-user mr-2"></i
+            ><span>Palestrante</span> </ng-template
+          >//componente Palestrante//</tab
+        >
+        <tab *ngIf="ehPalestrante" class="border border-top-0 p-3"
+          ><ng-template tabHeading>
+            <i class="fa fa-share-nodes mr-2"></i
+            ><span>Rede Social</span> </ng-template
+          >//componente Rede Social//</tab
+        >
+      </tabset>
     </div>
-  </form>
+  </div>
 </div>
