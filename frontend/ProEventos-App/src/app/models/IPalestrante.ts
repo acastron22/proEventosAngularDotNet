@@ -1,13 +1,11 @@
-import { IEvento } from './IEvento'
-import { IRedeSocial } from './IRedeSocial'
+import { IUserUpdate } from 'src/app/models/identity/iuser-update';
+import { IEvento } from './IEvento';
+import { IRedeSocial } from './IRedeSocial';
 
 export interface IPalestrante {
-    id: number
-    nome: string
-    miniCurriculo: string
-    imagemUrl: string
-    telefone: string
-    email: string
-    redesSociais: IRedeSocial[]
-    palestrantesEventos: IEvento[]
+  id: number;
+  miniCurriculo: string;
+  user: IUserUpdate;
+  redesSociais: IRedeSocial[];
+  palestrantesEventos: IEvento[];
 }

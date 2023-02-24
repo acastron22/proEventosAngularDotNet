@@ -6,11 +6,10 @@ import { PaginatedResult } from '../models/pagination';
 import { IPalestrante } from '../models/IPalestrante';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PalestranteService {
-
-  baseUrl = `${environment.apiURL}api/palestrante`;
+  baseUrl = `${environment.apiURL}api/palestrantes`;
 
   constructor(private http: HttpClient) {}
 
@@ -19,9 +18,8 @@ export class PalestranteService {
     itemsPerPage?: number,
     termo?: string
   ): Observable<PaginatedResult<IPalestrante[]>> {
-    const paginatedResult: PaginatedResult<IPalestrante[]> = new PaginatedResult<
-      IPalestrante[]
-    >();
+    const paginatedResult: PaginatedResult<IPalestrante[]> =
+      new PaginatedResult<IPalestrante[]>();
 
     let params = new HttpParams();
 
@@ -33,7 +31,10 @@ export class PalestranteService {
     if (termo != null && termo != '') params = params.append('termos', termo);
 
     return this.http
-      .get<IPalestrante[]>(this.baseUrl + '/all', { observe: 'response', params })
+      .get<IPalestrante[]>(this.baseUrl + '/all', {
+        observe: 'response',
+        params,
+      })
       .pipe(
         take(1),
         map((response) => {
@@ -49,13 +50,13 @@ export class PalestranteService {
   }
 
   getPalestrante(): Observable<IPalestrante> {
-    return this.http
-      .get<IPalestrante>(`${this.baseUrl}`)
-      .pipe(take(1));
+    return this.http.get<IPalestrante>(`${this.baseUrl}`).pipe(take(1));
   }
 
   post(): Observable<IPalestrante> {
-    return this.http.post<IPalestrante>(this.baseUrl, {} as IPalestrante).pipe(take(1));
+    return this.http
+      .post<IPalestrante>(this.baseUrl, {} as IPalestrante)
+      .pipe(take(1));
   }
 
   put(palestrante: IPalestrante): Observable<IPalestrante> {
@@ -63,5 +64,4 @@ export class PalestranteService {
       .put<IPalestrante>(`${this.baseUrl}`, palestrante)
       .pipe(take(1));
   }
-
 }

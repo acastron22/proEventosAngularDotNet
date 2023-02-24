@@ -35,8 +35,8 @@ export class JwtInterceptor implements HttpInterceptor {
       catchError((error) => {
         if (error) {
           localStorage.removeItem('user');
-          alert('Conexão Expirada. Por favor, faça o login novamente');
-          this.router.navigate(['/user/login']);
+          // alert('Conexão Expirada. Por favor, faça o login novamente');
+          // this.router.navigate(['/user/login']);
         }
         return throwError(error);
       })

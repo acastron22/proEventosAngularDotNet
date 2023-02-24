@@ -1,3 +1,4 @@
+import { PalestranteService } from 'src/app/services/palestrante.service';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import {
   AbstractControlOptions,
@@ -23,6 +24,7 @@ export class PerfilDetalheComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     public accountService: AccountService,
+    public palestranteService: PalestranteService,
     private router: Router,
     private tostr: ToastrService,
     private spinner: NgxSpinnerService
@@ -99,6 +101,20 @@ export class PerfilDetalheComponent implements OnInit {
   public atualizarUsuario() {
     this.userUpdate = { ...this.form.value };
     this.spinner.show();
+
+    if (this.registro.funcao.value == 'Palestrante') {
+      //chamando a função de criar o registro na tabela de Palestrante
+      this.palestranteService.post().subscribe(
+        () => this.tostr.success('Função palestrante ativada!', 'Sucesso!'),
+        (error) => {
+          this.tostr.error(
+            'Função não alterada. Verifique com suporte técnico',
+            'Error'
+          );
+          console.error(error);
+        }
+      );
+    }
 
     this.accountService
       .updateUser(this.userUpdate)

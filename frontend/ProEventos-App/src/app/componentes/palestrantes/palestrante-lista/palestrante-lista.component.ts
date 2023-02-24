@@ -39,7 +39,7 @@ export class PalestranteListaComponent implements OnInit {
     this.carregarPalestrantes();
   }
 
-  filtrarEventos(evt: any): void {
+  filtrarPalestrante(evt: any): void {
     if (this.termoBuscaChanged.observers.length === 0) {
       this.termoBuscaChanged
         .pipe(debounceTime(1000))
