@@ -1,3 +1,4 @@
+import { environment } from 'src/environments/environment';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BsModalService } from 'ngx-bootstrap/modal';
@@ -67,10 +68,20 @@ export class PalestranteListaComponent implements OnInit {
     this.termoBuscaChanged.next(evt.value);
   }
 
+  getImagemUrl(imagemName: string): string {
+    if (imagemName)
+      return (imagemName =
+        environment.apiURL + `resources/perfil/${imagemName}`);
+    else return (imagemName = './assets/perfil.png');
+  }
+
   carregarPalestrantes(): void {
     this.spinner.show();
     this.palestranteService
-      .getPalestrantes(this.pagination.currentPage, this.pagination.itemsPerPage)
+      .getPalestrantes(
+        this.pagination.currentPage,
+        this.pagination.itemsPerPage
+      )
       .subscribe({
         next: (paginatedResult: PaginatedResult<IPalestrante[]>) => {
           this.palestrantes = paginatedResult.result!;

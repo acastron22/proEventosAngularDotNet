@@ -1,19 +1,21 @@
 // Componentes da aplicação
 import { AppComponent } from './app.component';
-import { EventosComponent } from './componentes/eventos/eventos.component';
-import { NavegacaoComponent } from './shared/navegacao/navegacao.component';
-import { PalestrantesComponent } from './componentes/palestrantes/palestrantes.component';
 import { AppRoutingModule } from './app-routing.module';
-import { TituloComponent } from './shared/titulo/titulo.component';
 import { ContatosComponent } from './componentes/contatos/contatos.component';
 import { DashboardComponent } from './componentes/dashboard/dashboard.component';
-import { PerfilComponent } from './componentes/user/perfil/perfil.component';
-import { PerfilDetalheComponent } from './componentes/user/perfil/perfil-detalhe/perfil-detalhe.component';
+import { EventosComponent } from './componentes/eventos/eventos.component';
 import { EventoDetalheComponent } from './componentes/eventos/evento-detalhe/evento-detalhe.component';
 import { EventoListaComponent } from './componentes/eventos/evento-lista/evento-lista.component';
-import { UserComponent } from './componentes/user/user.component';
 import { LoginComponent } from './componentes/user/login/login.component';
+import { NavegacaoComponent } from './shared/navegacao/navegacao.component';
+import { PalestrantesComponent } from './componentes/palestrantes/palestrantes.component';
+import { PalestranteListaComponent } from './componentes/palestrantes/palestrante-lista/palestrante-lista.component';
+import { PalestranteDetalheComponent } from './componentes/palestrantes/palestrante-detalhe/palestrante-detalhe.component';
+import { PerfilComponent } from './componentes/user/perfil/perfil.component';
+import { PerfilDetalheComponent } from './componentes/user/perfil/perfil-detalhe/perfil-detalhe.component';
 import { RegistrarComponent } from './componentes/user/registrar/registrar.component';
+import { TituloComponent } from './shared/titulo/titulo.component';
+import { UserComponent } from './componentes/user/user.component';
 
 // Services da aplicação
 import { EventoService } from './services/evento.service';
@@ -47,7 +49,6 @@ import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { NgxCurrencyModule } from 'ngx-currency';
 import { HomeComponent } from './componentes/home/home.component';
-import { PalestranteListaComponent } from './componentes/palestrantes/palestrante-lista/palestrante-lista.component';
 
 defineLocale('pt-br', ptBrLocale); //ngx bootstrap
 
@@ -70,6 +71,7 @@ defineLocale('pt-br', ptBrLocale); //ngx bootstrap
     RegistrarComponent,
     HomeComponent,
     PalestranteListaComponent,
+    PalestranteDetalheComponent,
   ],
   imports: [
     BrowserModule,
