@@ -38,7 +38,7 @@
               </div>
               <div class="col-6 text-center">
                 <div class="h5">1342</div>
-                <div class="h6 text-muted">Eventos Como Participados</div>
+                <div class="h6 text-muted">Eventos Como {{usuario.funcao}}</div>
               </div>
             </div>
           </li>
@@ -59,13 +59,20 @@
           <ng-template tabHeading>
             <i class="fa fa-user mr-2"></i><span>Palestrante</span>
           </ng-template>
+          <div class="form-group my-1">
+            <h3 class="border-bottom">Palestrante</h3>
+          </div>
           <app-palestrante-detalhe></app-palestrante-detalhe>
         </tab>
         <tab *ngIf="ehPalestrante" class="border border-top-0 p-3"
           ><ng-template tabHeading>
-            <i class="fa fa-share-nodes mr-2"></i
-            ><span>Rede Social</span> </ng-template
-          >//componente Rede Social//</tab
+            <i class="fa fa-share-nodes mr-2"></i><span>Rede Social</span>
+          </ng-template>
+          <div class="form-group my-1">
+            <h3 class="border-bottom">Rede Social</h3>
+          </div>
+          <app-redes-sociais></app-redes-sociais>
+          </tab
         >
       </tabset>
     </div>

@@ -134,9 +134,7 @@ export class EventoDetalheComponent implements OnInit {
       .add(() => this.spinner.hide());
   }
 
-  retornaTituloLote(nome: string): string {
-    return nome === null || nome === '' ? 'Nome do lote' : nome;
-  }
+
 
   validation(): void {
     this.form = this.formBuilder.group({
@@ -184,6 +182,10 @@ export class EventoDetalheComponent implements OnInit {
       dataInicio: [lote.dataInicio],
       dataFim: [lote.dataFim],
     });
+  }
+
+  retornaTituloLote(nome: string): string {
+    return nome === null || nome === '' ? 'Nome do lote' : nome;
   }
 
   mudarValorData(value: Date, indice: number, campo: string): void {

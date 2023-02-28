@@ -3,7 +3,7 @@ import { IPalestrante } from './IPalestrante';
 export interface IRedeSocial {
     id: number;
     nome: string;
-    URL: string;
+    url: string;
     eventoId?: number;
     palestranteId?: number;
 }

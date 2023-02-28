@@ -13,6 +13,7 @@ import { PalestranteListaComponent } from './componentes/palestrantes/palestrant
 import { PalestranteDetalheComponent } from './componentes/palestrantes/palestrante-detalhe/palestrante-detalhe.component';
 import { PerfilComponent } from './componentes/user/perfil/perfil.component';
 import { PerfilDetalheComponent } from './componentes/user/perfil/perfil-detalhe/perfil-detalhe.component';
+import { RedesSociaisComponent } from './componentes/redes-sociais/redes-sociais.component';
 import { RegistrarComponent } from './componentes/user/registrar/registrar.component';
 import { TituloComponent } from './shared/titulo/titulo.component';
 import { UserComponent } from './componentes/user/user.component';
@@ -72,6 +73,7 @@ defineLocale('pt-br', ptBrLocale); //ngx bootstrap
     HomeComponent,
     PalestranteListaComponent,
     PalestranteDetalheComponent,
+    RedesSociaisComponent,
   ],
   imports: [
     BrowserModule,

@@ -2,10 +2,14 @@
   <div class="form-group">
     <label for="">Minicurrículo</label>
     <textarea
+      maxlength="400"
+      height="200px"
       type="text"
       class="form-control"
       formControlName="miniCurriculo"
-      [ngClass]="{'is-invalid' : f.miniCurriculo.errors && f.miniCurriculo.touched"
+      [ngClass]="{
+        'is-invalid': f.miniCurriculo.errors && f.miniCurriculo.touched
+      }"
     ></textarea>
     <small class="form-text" [ngClass]="corDaDescricao">
       {{ situacaoDoForm }}
