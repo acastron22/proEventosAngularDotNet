@@ -7,11 +7,11 @@ import {
   FormControl,
   AbstractControl,
 } from '@angular/forms';
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Component, Input, OnInit, TemplateRef } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
-import { RedeSocialService } from 'src/app/services/rede-social.service';
+import { RedeSocialService } from 'src/app/services/redeSocial.service';
 
 @Component({
   selector: 'app-redes-sociais',
@@ -20,8 +20,8 @@ import { RedeSocialService } from 'src/app/services/rede-social.service';
 })
 export class RedesSociaisComponent implements OnInit {
   modalRef?: BsModalRef;
-  public eventoId = 0;
-  formRS?: FormGroup;
+  @Input() eventoId = 0;
+  formRS: FormGroup = this.fb.group({});
   redeSocialAtual = { id: 0, nome: '', indice: 0 };
 
   constructor(
@@ -33,11 +33,33 @@ export class RedesSociaisComponent implements OnInit {
   ) {}
 
   get redesSociais(): FormArray {
-    return this.formRS!.get('redesSociais') as FormArray;
+    return this.formRS.get('redesSociais') as FormArray;
   }
 
   ngOnInit(): void {
+    this.carregarRedesSociais(this.eventoId);
     this.validation();
+  }
+
+  private carregarRedesSociais(id: number = 0): void {
+    let origem = 'palestrante';
+    if (this.eventoId !== 0) origem = 'evento';
+    this.spinner.show();
+
+    this.redeSocialService
+      .getRedesSociais(origem, id)
+      .subscribe(
+        (redeSocialRetorno: IRedeSocial[]) => {
+          redeSocialRetorno.forEach((redeSocial) => {
+            this.redesSociais.push(this.criarRedeSocial(redeSocial));
+          });
+        },
+        (error: any) => {
+          this.toastr.error('Erro ao carregar redes sociais', 'Erro');
+          console.log(error);
+        }
+      )
+      .add(() => this.spinner.hide());
   }
 
   validation(): void {
@@ -67,16 +89,18 @@ export class RedesSociaisComponent implements OnInit {
   }
 
   salvarRedesSociais(): void {
+    let origem = 'palestrante';
+    if (this.eventoId !== 0) origem = 'evento';
     if (this.formRS!.controls['redesSociais'].valid) {
       this.spinner.show();
       this.redeSocialService
-        .salvarRedeSocial(this.eventoId!, this.formRS!.value.redesSociais)
+        .saveRedesSociais(origem, this.eventoId, this.formRS.value.redesSociais)
         .subscribe(
           () => {
-            this.toastr.success('redesSociais salvos com Sucesso!', 'Sucesso!');
+            this.toastr.success('Rede social salvo com Sucesso!', 'Sucesso!');
           },
           (error: any) => {
-            this.toastr.error('Erro ao tentar salvar redesSociais.', 'Error!');
+            this.toastr.error('Erro ao tentar salvar Rede social.', 'Error!');
             console.error(error);
           }
         )
@@ -93,13 +117,17 @@ export class RedesSociaisComponent implements OnInit {
     //
   }
   confirmarDeleteredeSocial(): void {
+    let origem = 'palestrante';
     this.modalRef?.hide();
     this.spinner.show();
+
+    if (this.eventoId !== 0) origem = 'evento';
+
     this.redeSocialService
-      .deleteRedeSocial(this.eventoId!, this.redeSocialAtual.id)
+      .deleteRedesSociais(origem, this.eventoId, this.redeSocialAtual.id)
       .subscribe(
         () => {
-          this.toastr.success('redeSocial deletado com sucesso!', 'Sucesso');
+          this.toastr.success('rede social deletado com sucesso!', 'Sucesso');
           this.redesSociais.removeAt(this.redeSocialAtual.indice);
         },
         (error: any) => {
@@ -111,5 +139,9 @@ export class RedesSociaisComponent implements OnInit {
         }
       )
       .add(() => this.spinner.hide());
+  }
+
+  recusarDeleteRedeSocial(): void {
+    this.modalRef?.hide();
   }
 }
